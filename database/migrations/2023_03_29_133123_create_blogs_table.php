@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('property_category_id');
             $table->string('title')->nullable();
-            $table->string('details')->nullable();
+            $table->text('details')->nullable();
             $table->string('bolg_image')->nullable();
             $table->string('bolg_date')->nullable();
             $table->timestamps();
