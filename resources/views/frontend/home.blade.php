@@ -552,7 +552,7 @@
                   type="button"
                   class="fifth-card-button btn py-1 mx-2 text-light"
                 >
-                  New Arrivel
+                  {{$b->property_cat?->name}}
                 </button>
               </div>
               <div class="fifth-card-text ps-3">
