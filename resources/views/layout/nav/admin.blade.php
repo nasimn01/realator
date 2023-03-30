@@ -58,24 +58,21 @@
         </ul>
     </li>
     <li class="sidebar-item has-sub">
-        <a href="#" class='sidebar-link'>
-            <i class="bi bi-files"></i>
-            <span>{{__('Property')}}</span>
-        </a>
+        <a href="#" class='sidebar-link'> <i class="bi bi-files"></i> <span>{{__('Property')}}</span> </a>
         <ul class="submenu">
-            <li class="submenu-item sidebar-item has-sub">
+            <li class="submenu-item sidebar-item has-sub ">
                 <a href="{{route(currentUser().'.category.index')}}">{{__('Property Category')}}</a>
             </li>
-            <li class="submenu-item sidebar-item has-sub">
+            <li class="submenu-item sidebar-item has-sub ">
                 <a href="{{route(currentUser().'.advance.index')}}">{{__('Advance Feature')}}</a>
             </li>
-            <li class="submenu-item sidebar-item has-sub">
+            <li class="submenu-item sidebar-item has-sub ">
                 <a href="{{route(currentUser().'.ameneties.index')}}">{{__('Ameneties')}}</a>
             </li>
-            <li class="submenu-item sidebar-item has-sub">
+            <li class="submenu-item sidebar-item has-sub ">
                 <a href="{{route(currentUser().'.property.index')}}">{{__('Property')}}</a>
             </li>
-            <li class="submenu-item sidebar-item has-sub">
+            <li class="submenu-item sidebar-item has-sub ">
                 <a href="{{route(currentUser().'.proPhoto.index')}}">{{__('Property Photo')}}</a>
             </li>
         </ul>
