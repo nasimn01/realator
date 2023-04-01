@@ -562,57 +562,6 @@
           </div>
         </dic>
         @endforeach
-        <!-- <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
-          <div class="fifth-card-two">
-            <div class="fifth-section-card px-1 pb-1 pt-2">
-              <div class="fourth-button mt-2 me-2 float-end text-light">
-                <button
-                  type="button"
-                  class="fifth-card-button btn py-1 mx-2 text-light"
-                >
-                  New Arrivel
-                </button>
-              </div>
-              <div class="fifth-card-text ps-3">
-                <p class="text-light fw-semibold">Our Top Corporate Office</p>
-              </div>
-            </div>
-          </div>
-        </dic>
-        <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
-          <div class="fifth-card-three">
-            <div class="fifth-section-card px-1 pb-1 pt-2">
-              <div class="fourth-button mt-2 me-2 float-end text-light">
-                <button
-                  type="button"
-                  class="fifth-card-button btn py-1 mx-2 text-light"
-                >
-                  New Arrivel
-                </button>
-              </div>
-              <div class="fifth-card-text ps-3">
-                <p class="text-light fw-semibold">Up Coming Project</p>
-              </div>
-            </div>
-          </div>
-        </dic>
-        <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
-          <div class="fifth-card-four">
-            <div class="fifth-section-card px-1 pb-1 pt-2">
-              <div class="fourth-button mt-2 me-2 float-end text-light">
-                <button
-                  type="button"
-                  class="fifth-card-button btn py-1 mx-2 text-light"
-                >
-                  Property
-                </button>
-              </div>
-              <div class="fifth-card-text ps-3">
-                <p class="text-light fw-semibold">4 Bed Room, Full Furnished</p>
-              </div>
-            </div>
-          </div>
-        </dic> -->
       </div>
     </section>
     <!--   seventh section end  -->
@@ -698,7 +647,7 @@
                 <div class="input-group mb-3">
                   <input
                     name="emailAdress"
-                    type="text"
+                    type="email"
                     class="form-control"
                     placeholder="Enter Your Email Address"
                     aria-label="Recipient's username"
