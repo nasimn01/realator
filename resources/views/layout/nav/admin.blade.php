@@ -11,7 +11,7 @@
             <span>{{__('Manage Website')}}</span>
         </a>
         <ul class="submenu">
-            <li class="submenu-item sidebar-item has-sub">
+            <!-- <li class="submenu-item sidebar-item has-sub">
                 <a href="#" class='sidebar-link'> {{__('Setting')}}</a>
                 <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.country.index')}}">{{__('Country')}}</a></li>
@@ -21,7 +21,7 @@
                     <li class="py-1"><a href="{{route(currentUser().'.thana.index')}}">{{__('Thana')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.admin.index')}}">{{__('Users')}}</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.home.index')}}">{{__('Home Page')}}</a>
             </li>
