@@ -46,7 +46,7 @@ class PropertyPhotoController extends Controller
             $proPhoto=new property_photo;
             $proPhoto->property_id = $request->property;
             if($request->has('Picture'))
-            $proPhoto->image=$this->resizeImage($request->Picture,'uploads/property_photo',true,200,200,true);
+            $proPhoto->image=$this->resizeImage($request->Picture,'uploads/property_photo',true,637,415,false);
             if($proPhoto->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.proPhoto.index');
@@ -103,7 +103,7 @@ class PropertyPhotoController extends Controller
             $path='uploads/property_photo';
             if($request->has('Picture') && $request->Picture)
             if($this->deleteImage($proPhoto->image,$path))
-                $proPhoto->image=$this->resizeImage($request->Picture,$path,true,200,200,true);
+                $proPhoto->image=$this->resizeImage($request->Picture,$path,true,637,415,false);
 
             if($proPhoto->save()){
             Toastr::success('Update Successfully!');

@@ -46,7 +46,7 @@ class CustomerReviewController extends Controller
             $proCat->review = $request->review;
             $proCat->location = $request->location;
             if($request->has('image'))
-            $proCat->image=$this->resizeImage($request->image,'uploads/customer',true,200,200,true);
+            $proCat->image=$this->resizeImage($request->image,'uploads/customer',true,102,89,false);
             if($proCat->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.review.index');
@@ -104,7 +104,7 @@ class CustomerReviewController extends Controller
             $path='uploads/customer';
             if($request->has('image') && $request->image)
             if($this->deleteImage($proCat->image,$path))
-                $proCat->image=$this->resizeImage($request->image,$path,true,200,200,true);
+                $proCat->image=$this->resizeImage($request->image,$path,true,102,89,false);
 
             if($proCat->save()){
             Toastr::success('Updated Successfully!');

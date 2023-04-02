@@ -54,7 +54,7 @@ class HomePageController extends Controller
                 $home->logo=$this->resizeImage($request->logo,'uploads/logo',true,700,300,false);
 
             if($request->has('contact_img'))
-                $home->contact_img=$this->resizeImage($request->contact_img,'uploads/contact_img',true,700,300,false);
+                $home->contact_img=$this->resizeImage($request->contact_img,'uploads/contact_img',true,439,474,false);
 
             if($home->save()){
                 Toastr::success('Created Successfully');
@@ -123,7 +123,7 @@ class HomePageController extends Controller
             $path2='uploads/contact_img';
             if($request->has('contact_img') && $request->contact_img)
             if($this->deleteImage($home->contact_img,$path2))
-                $home->contact_img=$this->resizeImage($request->contact_img,$path2,true,700,300,false);
+                $home->contact_img=$this->resizeImage($request->contact_img,$path2,true,439,474,false);
 
             if($home->save()){
                 Toastr::success('Updated Successfully');

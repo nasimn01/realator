@@ -50,7 +50,7 @@ class FounderController extends Controller
             $found->linkedin = $request->linkedin;
             $found->message = $request->message;
             if($request->has('Picture'))
-            $found->image=$this->resizeImage($request->Picture,'uploads/founder',true,200,200,true);
+            $found->image=$this->resizeImage($request->Picture,'uploads/founder',true,444,570,false);
             if($found->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.founder.index');
@@ -111,7 +111,7 @@ class FounderController extends Controller
             $path='uploads/founder';
             if($request->has('Picture') && $request->Picture)
             if($this->deleteImage($found->image,$path))
-                $found->image=$this->resizeImage($request->Picture,$path,true,700,300,false);
+                $found->image=$this->resizeImage($request->Picture,$path,true,444,570,false);
 
             if($found->save()){
             Toastr::success('updated Successfully!');

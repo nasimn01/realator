@@ -49,7 +49,7 @@ class BlogController extends Controller
             $blog->details = $request->details;
             $blog->bolg_date = $request->date;
             if($request->has('bolg_image'))
-            $blog->bolg_image=$this->resizeImage($request->bolg_image,'uploads/blog',true,200,200,true);
+            $blog->bolg_image=$this->resizeImage($request->bolg_image,'uploads/blog',true,280,332,false);
             if($blog->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.blog.index');
@@ -109,7 +109,7 @@ class BlogController extends Controller
             $path='uploads/blog';
             if($request->has('bolg_image') && $request->bolg_image)
             if($this->deleteImage($blog->bolg_image,$path))
-                $blog->bolg_image=$this->resizeImage($request->bolg_image,$path,true,200,200,true);
+                $blog->bolg_image=$this->resizeImage($request->bolg_image,$path,true,280,332,false);
 
             if($blog->save()){
             Toastr::success('Create Successfully!');

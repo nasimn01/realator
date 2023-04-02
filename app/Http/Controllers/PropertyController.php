@@ -67,7 +67,7 @@ class PropertyController extends Controller
             $pro->status = $request->status;
             $pro->is_feature = $request->is_feature;
             if($request->has('feature_photo'))
-            $pro->feature_photo=$this->resizeImage($request->feature_photo,'uploads/property_feature',true,200,200,true);
+            $pro->feature_photo=$this->resizeImage($request->feature_photo,'uploads/property_feature',true,288,228,false);
             if($pro->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.property.index');
@@ -142,7 +142,7 @@ class PropertyController extends Controller
             $path='uploads/property_feature';
             if($request->has('feature_photo') && $request->feature_photo)
             if($this->deleteImage($pro->feature_photo,$path))
-                $pro->feature_photo=$this->resizeImage($request->feature_photo,$path,true,200,200,true);
+                $pro->feature_photo=$this->resizeImage($request->feature_photo,$path,true,288,228,false);
 
             if($pro->save()){
             Toastr::success('Update Successfully!');

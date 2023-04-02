@@ -44,8 +44,8 @@ class LocationController extends Controller
             $loc=new location;
             $loc->name = $request->name;
 
-            if($request->has('feature'))
-            $loc->feature_img=$this->resizeImage($request->feature,'uploads/location',true,200,200,true);
+            if($request->has('picture'))
+            $loc->feature_img=$this->resizeImage($request->feature,'uploads/location',true,280,332,false);
             
             if($loc->save()){
             Toastr::success('Create Successfully!');
@@ -99,10 +99,10 @@ class LocationController extends Controller
             $loc= location::findOrFail(encryptor('decrypt',$id));
             $loc->name = $request->name;
 
-            $path='uploads/feature';
+            $path='uploads/location';
             if($request->has('feature') && $request->feature)
             if($this->deleteImage($loc->feature_img,$path))
-                $loc->feature_img=$this->resizeImage($request->feature,$path,true,200,200,true);
+                $loc->feature_img=$this->resizeImage($request->feature,$path,true,280,332,false);
                 
             if($loc->save()){
             Toastr::success('Update Successfully!');

@@ -43,7 +43,7 @@ class SliderController extends Controller
         try{
             $slider=new Slider;
             if($request->has('Picture'))
-            $slider->image=$this->resizeImage($request->Picture,'uploads/Slide_image',true,1920,803,true);
+            $slider->image=$this->resizeImage($request->Picture,'uploads/Slide_image',true,659,368,false);
             if($slider->save()){
             Toastr::success('Slider Create Successfully!');
             return redirect()->route(currentUser().'.slider.index');
@@ -98,7 +98,7 @@ class SliderController extends Controller
             $path='uploads/Slide_image';
             if($request->has('Picture') && $request->Picture)
             if($this->deleteImage($slider->image,$path))
-                $slider->image=$this->resizeImage($request->Picture,$path,true,1920,803,true);
+                $slider->image=$this->resizeImage($request->Picture,$path,true,659,368,false);
 
             if($slider->save()){
             Toastr::success('Slider Update Successfully!');

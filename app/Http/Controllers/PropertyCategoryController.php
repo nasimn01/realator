@@ -48,7 +48,7 @@ class PropertyCategoryController extends Controller
             $proCat->location_id = $request->location_id;
             $proCat->price = $request->price;
             if($request->has('feature_image'))
-            $proCat->feature_image=$this->resizeImage($request->feature_image,'uploads/category',true,200,200,true);
+            $proCat->feature_image=$this->resizeImage($request->feature_image,'uploads/category',true,200,200,false);
             if($proCat->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.category.index');
@@ -107,7 +107,7 @@ class PropertyCategoryController extends Controller
             $path='uploads/category';
             if($request->has('feature_image') && $request->feature_image)
             if($this->deleteImage($proCat->feature_image,$path))
-                $proCat->feature_image=$this->resizeImage($request->feature_image,$path,true,200,200,true);
+                $proCat->feature_image=$this->resizeImage($request->feature_image,$path,true,200,200,false);
                 
             if($proCat->save()){
             Toastr::success('Update Successfully!');

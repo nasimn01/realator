@@ -3,20 +3,7 @@
 @section('pageSubTitle',trans('List'))
 
 @section('content')
-  <style>
-    .fifth-card-one {
-      background-image: url("{{ asset('resource/img/fifth-section-pic/image6.png')}}");
-    }
-    .fifth-card-two {
-      background-image: url("{{ asset('resource/img/fifth-section-pic/image7.png')}}");
-    }
-    .fifth-card-three {
-      background-image: url("{{ asset('resource/img/fifth-section-pic/image8.png')}}");
-    }
-    .fifth-card-four {
-      background-image: url("{{ asset('resource/img/fifth-section-pic/image9.png')}}");
-    }
-  </style>
+  
     <!-- Slider Section Start -->
     <section class="container slider">
       <div class="row">
@@ -83,7 +70,7 @@
                 @forelse($slider as $s)
                 <div class="carousel-item active">
                   <img
-                    src="{{asset('uploads/Slide_image/'.$s->image)}}"
+                    src="{{asset('uploads/Slide_image/thumb/'.$s->image)}}"
                     class="d-block w-100"
                     alt="..."
                   />
@@ -148,7 +135,7 @@
           <div class="col-sm-6 col-md-4 col-lg-3 col- my-3 px-2">
             <div class="card first-card shadow border border-0">
               <a href="{{route('sProperty',$loc->id)}}">
-                <img src="{{asset('uploads/property_feature/'.$loc->feature_photo)}}" class="card-img-top img-fluid" alt="..."/>
+                <img src="{{asset('uploads/property_feature/thumb/'.$loc->feature_photo)}}" class="card-img-top img-fluid" alt="..."/>
               </a>
               <div class="card-body">
                 <p class="card-amount">
@@ -443,7 +430,7 @@
               alt=""
             />
             <img
-              src="{{asset('uploads/contact_img/'.$homePage->contact_img)}}"
+              src="{{asset('uploads/contact_img/thumb/'.$homePage->contact_img)}}"
               class="img-fluid p-3 fourth-section-pic"
               alt=""
             />
@@ -469,7 +456,7 @@
       <div class="row pt-3 mt-5">
         @forelse($location as $loca)
         <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
-          <div  style="background-image: url('{{ asset('uploads/location/'.$loca->feature_img)}}');">
+          <div  style="background-image: url('{{ asset('uploads/location/thumb/'.$loca->feature_img)}}');">
             <div class="fifth-section-card px-1 pb-1 pt-2">
               <div class="fourth-button mt-2 me-2 float-end text-light">
                 <button
@@ -525,7 +512,7 @@
           <div class="sixth-pic">
             <img
               class="img-fluid ceo-img"
-              src="{{asset('uploads/founder/'.$found->image)}}"
+              src="{{asset('uploads/founder/thumb/'.$found->image)}}"
               alt=""
             />
           </div>
@@ -545,7 +532,7 @@
       <div class="row mt-5">
         @foreach($blog as $b)
         <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
-          <div  style="background-image: url('{{ asset('uploads/blog/'.$b->bolg_image)}}');">
+          <div  style="background-image: url('{{ asset('uploads/blog/thumb/'.$b->bolg_image)}}');">
             <div class="fifth-section-card px-1 pb-1 pt-2">
               <div class="fourth-button mt-2 me-2 float-end text-light">
                 <button
@@ -594,7 +581,7 @@
                 class="eighth-card-pic m-auto one ps-2 pt-1 rounded-3 text-center"
               >
                 <img
-                  src="{{asset('uploads/customer/'.$cus->image)}}"
+                  src="{{asset('uploads/customer/thumb/'.$cus->image)}}"
                   class="card-img-bottom img-fluid"
                   alt="..."
                 />

@@ -8,7 +8,7 @@
             <div class="swiper-wrapper">
                 @forelse($propPhoto as $photo)
                 <div class="swiper-slide">
-                    <img class="modImg" src="{{asset('uploads/property_photo/'.$photo->image)}}" alt="" />
+                    <img class="modImg" src="{{asset('uploads/property_photo/thumb/'.$photo->image)}}" alt="" />
                 </div>
                 @empty
                 @endforelse
@@ -412,7 +412,7 @@
                   <div class="col-sm-4">
                     <img
                       class="img-fluid rounded"
-                      src="{{asset('uploads/property_feature/'.$fp->feature_photo)}}"
+                      src="{{asset('uploads/property_feature/thumb/'.$fp->feature_photo)}}"
                       alt=""
                     />
                   </div>
