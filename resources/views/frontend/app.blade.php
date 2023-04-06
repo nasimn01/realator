@@ -24,6 +24,14 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <!-- font-awesome icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
@@ -60,10 +68,10 @@
                 <a class="nav-link active" aria-current="page" href="{{route('front')}}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Property</a>
+                <a class="nav-link" href="{{ route('search') }}">Property</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="{{ route('about.page') }}">About Us</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -205,10 +213,12 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script src="{{ asset('assets/js/jquery-1.9.1.min.js')}}"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <!-- JS File -->
     <script src="{{ asset('resource/js/app.js')}}"></script>
+    @stack('scripts')
   </body>
 </html>
 

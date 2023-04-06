@@ -116,7 +116,6 @@
                                     <div class="col-6">
                                         <label for="status"><b>{{__('Status')}}:</b></label>
                                         <select class="form-control form-select" value="{{ old('status')}}" name="status">
-                                            <option value="">Select Status</option>
                                             <option value="0">Inactive</option>
                                             <option value="1">Active</option>
                                         </select>
@@ -124,7 +123,6 @@
                                     <div class="col-6">
                                         <label for="is_feature"><b>{{__('Is Feature')}}:</b></label>
                                         <select class="form-control form-select" value="{{ old('is_feature')}}" name="is_feature">
-                                            <option value="">Select is feature</option>
                                             <option value="0">No</option>
                                             <option value="1">Yes</option>
                                         </select>

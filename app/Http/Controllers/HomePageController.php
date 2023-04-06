@@ -18,7 +18,7 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        $home = home_page::paginate(10);
+        $home = home_page::latest()->take(1)->get();
         return view('homePage.index',compact('home'));
     }
 

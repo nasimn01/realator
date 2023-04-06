@@ -43,6 +43,14 @@
                                     <a href="{{route(currentUser().'.blog.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
+                                    <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                    <form id="form{{$p->id}}" action="{{route(currentUser().'.blog.destroy',encryptor('encrypt',$p->id))}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        
+                                    </form>
                                 </td>
                             </tr>
                             @empty

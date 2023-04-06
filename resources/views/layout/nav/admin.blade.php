@@ -55,6 +55,12 @@
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.blog.index')}}">{{__('Blog')}}</a>
             </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="{{route(currentUser().'.about.index')}}">{{__('About Us')}}</a>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="{{route(currentUser().'.aboutMotive.index')}}">{{__('About Us Motive')}}</a>
+            </li>
         </ul>
     </li>
     <!-- <li class="sidebar-item has-sub">

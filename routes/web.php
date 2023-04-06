@@ -23,6 +23,8 @@ use App\Http\Controllers\PropertyCategoryController as cat;
 use App\Http\Controllers\PropertyPhotoController as proPhoto;
 use App\Http\Controllers\CustomerReviewController as review;
 use App\Http\Controllers\BlogController as blog;
+use App\Http\Controllers\AboutUsController as about;
+use App\Http\Controllers\AboutUsMotiveController as aboutMotive;
 
 
 /* Middleware */
@@ -50,6 +52,12 @@ Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
 Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
+
+/* About Page */
+Route::get('/about.page', [front::class, 'aboutUs'])->name('about.page');
+
+/* search property */
+Route::get('/search', [front::class, 'search'])->name('search');
 
 /* single property */
 Route::get('/singleProp/{slug}',[front::class,'singleProperty'])->name('sProperty');
@@ -80,6 +88,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('proPhoto',proPhoto::class,['as'=>'admin']);
         Route::resource('review',review::class,['as'=>'admin']);
         Route::resource('blog',blog::class,['as'=>'admin']);
+        Route::resource('about',about::class,['as'=>'admin']);
+        Route::resource('aboutMotive',aboutMotive::class,['as'=>'admin']);
 
     });
 });

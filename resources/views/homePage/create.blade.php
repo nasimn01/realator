@@ -19,6 +19,7 @@
                                         <div class="form-group">
                                             <label for="logo">Logo</label>
                                             <input type="file" id="logo" class="form-control" name="logo">
+                                            <p class="text-danger">Maximum width 144px and height 67px*</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -50,6 +51,7 @@
                                         <div class="form-group">
                                             <label for="contact_img">Contact Image</label>
                                             <input type="file" id="contact_img" class="form-control" name="contact_img">
+                                            <p class="text-danger">Required width 439px and height 474px*</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

@@ -51,6 +51,7 @@
                                         <div class="form-group">
                                             <label for="Picture">Image</label>
                                             <input type="file" id="bolg_image" class="form-control" name="bolg_image">
+                                            <p class="text-danger">Required width 280px and height 332px*</p>
                                         </div>
                                     </div>
                                 </div>

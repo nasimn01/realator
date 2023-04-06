@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\property_category;
-use App\Models\location;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Traits\ImageHandleTraits;
@@ -30,8 +29,8 @@ class PropertyCategoryController extends Controller
      */
     public function create()
     {
-        $loc = location::all();
-        return view('category.create',compact('loc'));
+        
+        return view('category.create');
     }
 
     /**
@@ -45,8 +44,6 @@ class PropertyCategoryController extends Controller
         try{
             $proCat=new property_category;
             $proCat->name = $request->name;
-            $proCat->location_id = $request->location_id;
-            $proCat->price = $request->price;
             if($request->has('feature_image'))
             $proCat->feature_image=$this->resizeImage($request->feature_image,'uploads/category',true,200,200,false);
             if($proCat->save()){
@@ -84,9 +81,9 @@ class PropertyCategoryController extends Controller
      */
     public function edit($id)
     {
-        $loc = location::all();
+        
         $proCat = property_category::findOrFail(encryptor('decrypt',$id));
-        return view('category.edit',compact('loc','proCat'));
+        return view('category.edit',compact('proCat'));
     }
 
     /**
@@ -101,8 +98,6 @@ class PropertyCategoryController extends Controller
         try{
             $proCat=property_category::findOrFail(encryptor('decrypt',$id));
             $proCat->name = $request->name;
-            $proCat->location_id = $request->location_id;
-            $proCat->price = $request->price;
 
             $path='uploads/category';
             if($request->has('feature_image') && $request->feature_image)

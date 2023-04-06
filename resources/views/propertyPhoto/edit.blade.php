@@ -31,8 +31,9 @@
                                     </div>
                                     <div class="col-8 offset-2">
                                         <div class="form-group">
-                                            <label for="Picture">Feature Image</label>
+                                            <label for="Picture">Property Image</label>
                                             <input type="file" id="Picture" class="form-control" name="Picture">
+                                            <p class="text-danger">Required width 637px and height 415px*</p>
                                         </div>
                                     </div>
                                 </div>

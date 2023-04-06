@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('feature');
             $table->string('icon')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

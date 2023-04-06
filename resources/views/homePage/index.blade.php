@@ -62,9 +62,6 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-end my-3">
-                        {!! $home->links()!!}
-                    </div>
                 </div>
             </div>
         </div>

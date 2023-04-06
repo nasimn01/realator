@@ -166,8 +166,13 @@ class PropertyController extends Controller
      * @param  \App\Models\property  $property
      * @return \Illuminate\Http\Response
      */
-    public function destroy(property $property)
+    public function destroy($id)
     {
-        //
+        $pro= property::findOrFail(encryptor('decrypt',$id));
+        $pro->delete();
+        return redirect()->back();
     }
+    
+
+
 }

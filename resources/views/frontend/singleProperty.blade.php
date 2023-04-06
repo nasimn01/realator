@@ -420,7 +420,7 @@
                     <p>{{$fp->name}}</p>
                     <p>{{date('j F, Y', strtotime($fp->created_at))}}</p>
                     <p><i class="bi bi-geo-alt-fill"></i>{{$fp->locat?->name}}</p>
-                    <span>Rent</span>
+                    <span>{{$fp->property_cat?->name}}</span>
                   </div>
                 </div>
               </div>

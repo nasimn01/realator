@@ -122,8 +122,10 @@ class SliderController extends Controller
      * @param  \App\Models\slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(slider $slider)
+    public function destroy($id)
     {
-        //
+        $pro= slider::findOrFail(encryptor('decrypt',$id));
+        $pro->delete();
+        return redirect()->back();
     }
 }

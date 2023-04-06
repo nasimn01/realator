@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('property_id');
             $table->string('image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

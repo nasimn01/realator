@@ -44,7 +44,7 @@ class LocationController extends Controller
             $loc=new location;
             $loc->name = $request->name;
 
-            if($request->has('picture'))
+            if($request->has('feature'))
             $loc->feature_img=$this->resizeImage($request->feature,'uploads/location',true,280,332,false);
             
             if($loc->save()){
@@ -128,6 +128,16 @@ class LocationController extends Controller
      */
     public function destroy(location $location)
     {
-        //
+        try{
+            if($location->properties->count() > 0){
+                return redirect()->back()->with('message','You have to delete all property under this category first.');
+            }else{
+                $location->delete();
+                return redirect()->back();
+            }
+            
+        }catch(Exception $e){
+            return redirect()->back();
+        }
     }
 }

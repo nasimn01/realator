@@ -133,8 +133,10 @@ class BlogController extends Controller
      * @param  \App\Models\blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blog $blog)
+    public function destroy($id)
     {
-        //
+        $pro= blog::findOrFail(encryptor('decrypt',$id));
+        $pro->delete();
+        return redirect()->back();
     }
 }

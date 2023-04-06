@@ -24,8 +24,6 @@
                             <tr>
                                 <th scope="col">{{__('#SL')}}</th>
                                 <th scope="col">{{__('Property Type')}}</th>
-                                <th scope="col">{{__('Location')}}</th>
-                                <th scope="col">{{__('Price')}}</th>
                                 <th scope="col">{{__('Feature Image')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
@@ -35,8 +33,6 @@
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$p->name}}</td>
-                                <td>{{$p->locat?->name}}</td>
-                                <td>{{$p->price}}</td>
                                 <td><img width="50px" src="{{asset('uploads/category/'.$p->feature_image)}}" alt=""></td>
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">

@@ -8,7 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     : {
         skin: "oxide",
+        height: 400,
         content_css: "default",
+        plugins: [
+          'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+         'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+         'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+       ],
       }
 
   tinymce.init({ selector: "#default", ...themeOptions })

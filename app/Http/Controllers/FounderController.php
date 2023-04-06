@@ -18,7 +18,7 @@ class FounderController extends Controller
      */
     public function index()
     {
-        $found= founder::all();
+        $found= founder::latest()->take(1)->get();
         return view('founder.index',compact('found'));
     }
 

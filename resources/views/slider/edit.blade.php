@@ -22,6 +22,7 @@
                                             <label for="Picture">Image</label>
                                             <input type="file" id="Picture" class="form-control"
                                                 placeholder="Picture" name="Picture">
+                                            <p class="text-danger">Required width 659px and height 368px*</p>
                                         </div>
                                     </div>
                                 <div class="row">

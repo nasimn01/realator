@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('status')->default(0);
             $table->string('is_feature')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

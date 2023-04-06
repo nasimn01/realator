@@ -128,8 +128,10 @@ class CustomerReviewController extends Controller
      * @param  \App\Models\customer_review  $customer_review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(customer_review $customer_review)
+    public function destroy($id)
     {
-        //
+        $pro= customer_review::findOrFail(encryptor('decrypt',$id));
+        $pro->delete();
+        return redirect()->back();
     }
 }

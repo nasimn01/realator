@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('bolg_image')->nullable();
             $table->string('bolg_date')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

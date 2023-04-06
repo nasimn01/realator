@@ -127,8 +127,10 @@ class PropertyPhotoController extends Controller
      * @param  \App\Models\property_photo  $property_photo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(property_photo $property_photo)
+    public function destroy($id)
     {
-        //
+        $pro= property_photo::findOrFail(encryptor('decrypt',$id));
+        $pro->delete();
+        return redirect()->back();
     }
 }

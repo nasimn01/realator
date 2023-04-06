@@ -25,6 +25,7 @@
                                         <div class="form-group">
                                             <label for="Picture">Feature Image</label>
                                             <input type="file" id="feature" class="form-control" name="feature">
+                                            <p class="text-danger">Required width 280px and height 332px*</p>
                                         </div>
                                     </div>
                                 </div>

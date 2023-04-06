@@ -89,33 +89,41 @@
           </div>
           <!-- search select Section -->
           <div class="search-div bg-white p-3 shadow-lg mt-5 rounded">
-            <div class="row">
-              <div class="col-sm-5 mb-3">
-                <select
-                  class="form-select form-select-sm"
-                  aria-label="Default select example"
-                >
-                  <option selected>Proparty Type</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+            <form action="{{ route('search') }}" method="GET">
+              <div class="row">
+                <div class="col-sm-5 mb-3">
+                  <select
+                    class="form-select form-select-sm"
+                    aria-label="Default select example"
+                    name="category"
+                  >
+                    <option value="">Proparty Type</option>
+                    @forelse($search_property as $d)
+                        <option value="{{$d->id}}"> {{ $d->name}}</option>
+                    @empty
+                        <option value="">No Data found</option>
+                    @endforelse
+                  </select>
+                </div>
+                <div class="col-sm-5 mb-3">
+                  <select
+                    class="form-select form-select-sm"
+                    aria-label="Default select example"
+                    name="locat"
+                  >
+                    <option value="">Locaiton</option>
+                    @forelse($search_location as $d)
+                        <option value="{{$d->id}}"> {{ $d->name}}</option>
+                    @empty
+                        <option value="">No Data found</option>
+                    @endforelse
+                  </select>
+                </div>
+                <div class="col-sm-2 mb-3">
+                  <button type="submit" class="btn-brand py-1">Submit</button>
+                </div>
               </div>
-              <div class="col-sm-5 mb-3">
-                <select
-                  class="form-select form-select-sm"
-                  aria-label="Default select example"
-                >
-                  <option selected>Locaiton</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div class="col-sm-2 mb-3">
-                <a href="#" class="btn-brand"> Submit</a>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -184,22 +192,22 @@
                 <div class="d-flex third-section-image p-2">
                   <div class="p-2">
                     <img
-                      src="{{ asset('resource/img/third-section-pic/image 2.png')}}"
-                      class="img-fluid third-section-pic"
+                    src="{{asset('uploads/about/img1/thumb/'.$about->image_one)}}"
+                    class="img-fluid third-section-pic"
                       alt=""
                     />
                   </div>
                   <div>
                     <div class="p-2">
                       <img
-                        src="{{ asset('resource/img/third-section-pic/image 3.png')}}"
+                        src="{{asset('uploads/about/img2/thumb/'.$about->image_two)}}"
                         class="img-fluid third-section-pic"
                         alt=""
                       />
                     </div>
                     <div class="p-2">
                       <img
-                        src="{{ asset('resource/img/third-section-pic/image 4.png')}}"
+                        src="{{asset('uploads/about/img3/thumb/'.$about->image_three)}}"
                         class="img-fluid third-section-pic"
                         alt=""
                       />
@@ -219,24 +227,31 @@
           <div class="col-sm-12 col-md-12 col-lg-6">
             <div class="m-3 ms-5">
               <!-- first header -->
+              <a href="{{ route('about.page') }}" style="text-decoration: none; color:black;">
               <h4 class="fw-bold my-3">About Us</h4>
+              </a>
+              
               <!-- second header -->
               <div class="me-5">
                 <h2 class="second-header" style="width: 20rem">
-                  Decorate Your Own Home Environment
+                  {{$about->title}}
                 </h2>
               </div>
               <!-- head end -->
               <p class="my-4 fw-semibold third-section-pera">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                varius malesuada justo vel varius. Pellentesque nec turpis a
-                ante sollicitudin convallis. Ut sed leo urna. Nulla maximus urna
-                eget congue pretium. Aliquam sit amet lacinia elit. Etiam ac
-                tortor eget nibh consequat placerat. Interdum et malesuada fames
-                ac ante ipsum primis in faucibus.
+                {{$about->short_text}}
               </p>
               <!-- list start -->
               <ul class="third-section-list ms-0">
+                @forelse($about_motive as $abm)
+                <li>
+                  <img
+                    src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
+                    alt=""
+                  />
+                  {{$abm->motive}}
+                </li>
+                @empty
                 <li>
                   <img
                     src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
@@ -244,41 +259,7 @@
                   />
                   Decorate Your Own Home Environment
                 </li>
-                <li>
-                  <img
-                    src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
-                    alt=""
-                  />
-                  Decorate Your Own
-                </li>
-                <li>
-                  <img
-                    src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
-                    alt=""
-                  />
-                  Decorate Your Own Home
-                </li>
-                <li>
-                  <img
-                    src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
-                    alt=""
-                  />
-                  Decorate Your
-                </li>
-                <li>
-                  <img
-                    src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
-                    alt=""
-                  />
-                  Decorate Your Own Home Environment
-                </li>
-                <li>
-                  <img
-                    src="{{ asset('resource/img/third-section-pic/Vector.png')}}"
-                    alt=""
-                  />
-                  Decorate Your Own Home
-                </li>
+                @endforelse
               </ul>
               <!-- list end -->
             </div>
@@ -504,7 +485,7 @@
           </div>
           <div class="sixth-pera fw-semibold mt-4 me-5">
             <p>
-            {{$found->message}}
+            {!!$found->message!!}
             </p>
           </div>
         </div>
@@ -640,7 +621,7 @@
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                     required/>
-                  <button type="submit">
+                  <button type="submit" style="border:none; padding:0; margin:0; background-color:transparent;">
                     <span class="input-group-text" id="basic-addon2"
                     >Subscribe</span>
                   </button>
