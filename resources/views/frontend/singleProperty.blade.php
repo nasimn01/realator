@@ -219,8 +219,10 @@
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
                   <div class="accordion-body">
-                    <div class="row rating">
-                      <div class="col-4 border-end border-dark">
+                    <div
+                      class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 rating"
+                    >
+                      <div class="col-4">
                         <p>4.5</p>
                         <p>Out of 5.00</p>
                         <i class="bi bi-star-fill"></i>
@@ -294,6 +296,47 @@
                         </div>
                       </div>
                     </div>
+                    <br />
+                    <hr />
+                    <!-- Reating Comment -->
+                    <div>
+                    <div class="row rating-comment">
+                        <div class="col-sm-2 mb-4">
+                          <img src="{{asset('./resource/img/user.png')}}" alt="" />
+                        </div>
+                        <div class="col-sm-10">
+                          <p>Mr. Jone</p>
+                          <p>admin@email.com</p>
+                          <p>5 Star</p>
+                          <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Aperiam suscipit laboriosam, nulla obcaecati
+                            consequuntur id maiores voluptatibus necessitatibus
+                            illo tempora voluptas eligendi doloribus ex ipsam
+                            molestias quam distinctio? Rem, odit!
+                          </p>
+                        </div>
+                      </div>
+                      <br />
+                      <hr />
+                      <div class="row rating-comment">
+                        <div class="col-sm-2 mb-4">
+                          <img src="{{asset('./resource/img/user.png')}}" alt="" />
+                        </div>
+                        <div class="col-sm-10">
+                          <p>Mr. Jone</p>
+                          <p>admin@email.com</p>
+                          <p>5 Star</p>
+                          <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Aperiam suscipit laboriosam, nulla obcaecati
+                            consequuntur id maiores voluptatibus necessitatibus
+                            illo tempora voluptas eligendi doloribus ex ipsam
+                            molestias quam distinctio? Rem, odit!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -319,34 +362,46 @@
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
                   <div class="accordion-body">
-                    <div class="row review mb-3">
+                    <div class="row star-section review mb-3">
                       <div class="col-sm-12 col-md-12 col-lg-4">
                         <p>Property</p>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <p>Value of Money</p>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
+                        <div class="d-flex star">
+                          <input type="radio" name="property" id="property1"/><label for="property1"></label>
+                          <input type="radio" name="property" id="property2"/><label for="property2"></label>
+                          <input type="radio" name="property" id="property3"/><label for="property3"></label>
+                          <input type="radio" name="property" id="property4"/><label for="property4"></label>
+                          <input type="radio" name="property" id="property5"/><label for="property5"></label>
+                        </div>
+                        <div class="mt-5 star-section">
+                          <p>Value of Money</p>
+                          <div class="d-flex star mb-3">
+                            <input type="radio" name="value-of-Money" id="value-of-Money1"/><label for="value-of-Money1"></label>
+                            <input type="radio" name="value-of-Money" id="value-of-Money2"/><label for="value-of-Money2"></label>
+                            <input type="radio" name="value-of-Money" id="value-of-Money3"/><label for="value-of-Money3"></label>
+                            <input type="radio" name="value-of-Money" id="value-of-Money4"/><label for="value-of-Money4"></label>
+                            <input type="radio" name="value-of-Money" id="value-of-Money5"/><label for="value-of-Money5"></label>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-4">
                         <p>Location</p>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <p>Agent Support</p>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
+                        <div class="d-flex star mb-3">
+                          <input type="radio" name="location" id="location1"/><label for="location1"></label>
+                          <input type="radio" name="location" id="location2"/><label for="location2"></label>
+                          <input type="radio" name="location" id="location3"/><label for="location3"></label>
+                          <input type="radio" name="location" id="location4"/><label for="location4"></label>
+                          <input type="radio" name="location" id="location5"/><label for="vlocation5"></label>
+                        </div>
+                        <div class="my-5">
+                          <p>Agent Support</p>
+                          <div class="d-flex star mb-3">
+                            <input type="radio" name="agent-support" id="agent-support1"/><label for="agent-support1"></label>
+                            <input type="radio" name="agent-support" id="agent-support2"/><label for="agent-support2"></label>
+                            <input type="radio" name="agent-support" id="agent-support3"/><label for="agent-support3"></label>
+                            <input type="radio" name="agent-support" id="agent-support4"/><label for="agent-support4"></label>
+                            <input type="radio" name="agent-support" id="agent-support5"/><label for="agent-support5"></label>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-4">
                         <div class="avarege-ratting">
@@ -356,15 +411,15 @@
                       </div>
                     </div>
                     <!-- Comment Form -->
-                    <div class="mb-3 comment-form">
+                    <div class="mb-3 mt-5 comment-form">
                       <textarea
                         class="form-control bg-light mb-3"
                         id="exampleFormControlTextarea1"
                         rows="3"
-                        placeholder="Massege"
+                        placeholder="Your Comment"
                       ></textarea>
                       <div class="row">
-                        <div class="col sm-6">
+                        <div class="col-sm-6">
                           <div class="mb-3">
                             <input
                               type="text"
@@ -374,13 +429,90 @@
                             />
                           </div>
                         </div>
-                        <div class="col sm-6">
+                        <div class="col-sm-6">
                           <div class="mb-3">
                             <input
                               type="email"
                               class="form-control bg-light"
                               id="exampleFormControlInput1"
                               placeholder="Email address"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <a class="submit-btn" href="">Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Submit Your Quary -->
+            <div class="accordion mb-4" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item shadow">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseEight"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne"
+                  >
+                    Submit Your Quary
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseEight"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingOne"
+                >
+                  <div class="accordion-body">
+                    <!-- Comment Form -->
+                    <div class="mb-3comment-form">
+                      <textarea
+                        class="form-control bg-light mb-3"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        placeholder="Massege"
+                      ></textarea>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="mb-3">
+                            <input
+                              type="text"
+                              class="form-control bg-light"
+                              id="exampleFormControlInput1"
+                              placeholder="Your Name"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="mb-3">
+                            <input
+                              type="email"
+                              class="form-control bg-light"
+                              id="exampleFormControlInput1"
+                              placeholder="Email address"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="mb-3">
+                            <input
+                              type="number"
+                              class="form-control bg-light"
+                              id="exampleFormControlInput1"
+                              placeholder="Your Mobile Number"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="mb-3">
+                            <input
+                              type="text"
+                              class="form-control bg-light"
+                              id="exampleFormControlInput1"
+                              placeholder="Address"
                             />
                           </div>
                         </div>

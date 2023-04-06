@@ -754,7 +754,7 @@ body {
   border: 1px solid rgb(183, 187, 189);
 }
 .searchBox input {
-  padding: 0.5rem;
+  padding: 0.4rem;
   width: 90%;
   border-radius: 50px;
   border: 1px;
@@ -769,13 +769,12 @@ body {
   margin: 0;
 }
 .searchBox span {
-  background: rgb(68, 67, 67);
-  color: #fdfdfd;
+  color: rgb(68, 67, 67);
   height: 90%;
-  padding: 0.325rem 1.5rem;
+  padding: 0.325rem 1rem;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin: 0.1225rem;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;

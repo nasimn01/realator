@@ -55,11 +55,9 @@
                     <div class="share product-card-seciton bg-white shadow-lg p-2 rounded mb-4">
                         <div class="inner-row-remove row p-2">
                             <div class="inner-col4-remove col-sm-4">
-                            <img
-                                class="img-fluid rounded mb-3"
-                                src="{{asset('uploads/property_feature/thumb/'.$p->feature_photo)}}"
-                                alt=""
-                            />
+                              <a href="{{route('sProperty',$p->id)}}">
+                                <img class="img-fluid rounded mb-3" src="{{asset('uploads/property_feature/thumb/'.$p->feature_photo)}}" alt=""/>
+                              </a>
                             </div>
                             <div class="inner-col8-remove col-sm-8">
                             <p>{{$p->name}}</p>

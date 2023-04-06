@@ -34,9 +34,9 @@
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.location.index')}}">{{__('Location')}}</a>
             </li>
-            <li class="submenu-item sidebar-item has-sub">
+            <!-- <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.category.index')}}">{{__('Property Category')}}</a>
-            </li>
+            </li> -->
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.advance.index')}}">{{__('Advance Feature')}}</a>
             </li>
