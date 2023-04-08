@@ -468,57 +468,48 @@
                 >
                   <div class="accordion-body">
                     <!-- Comment Form -->
-                    <div class="mb-3comment-form">
-                      <textarea
-                        class="form-control bg-light mb-3"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
-                        placeholder="Massege"
-                      ></textarea>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="mb-3">
-                            <input
-                              type="text"
-                              class="form-control bg-light"
-                              id="exampleFormControlInput1"
-                              placeholder="Your Name"
-                            />
+                    <form action="{{route('customer.query')}}" method="post">
+                      @csrf
+                      <div class="mb-3comment-form">
+                        @if(Session::has('response'))
+                            {!!Session::get('response')['message']!!}
+                        @endif
+                        <textarea class="form-control bg-light mb-3" name="message" rows="3" placeholder="Massege"></textarea>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="mb-3">
+                              <input type="text" class="form-control bg-light" name="name" placeholder="Your Name" required/>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="mb-3">
+                              <input type="email" class="form-control bg-light" name="emailAddress" placeholder="Email address" required/>
+                            </div>
+                            @if($errors->has('eamilAddress'))
+                                <small class="d-block text-danger">
+                                    {{$errors->first('eamilAddress')}}
+                                </small>
+                            @endif
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="mb-3">
+                              <input type="number" class="form-control bg-light" name="phoneNumber" id="" placeholder="Your Mobile Number" required/>
+                            </div>
+                            @if($errors->has('phoneNumber'))
+                                <small class="d-block text-danger">
+                                    {{$errors->first('phoneNumber')}}
+                                </small>
+                            @endif
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="mb-3">
+                              <input type="text" class="form-control bg-light" name="address" id="" placeholder="Address"/>
+                            </div>
                           </div>
                         </div>
-                        <div class="col-sm-6">
-                          <div class="mb-3">
-                            <input
-                              type="email"
-                              class="form-control bg-light"
-                              id="exampleFormControlInput1"
-                              placeholder="Email address"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="mb-3">
-                            <input
-                              type="number"
-                              class="form-control bg-light"
-                              id="exampleFormControlInput1"
-                              placeholder="Your Mobile Number"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="mb-3">
-                            <input
-                              type="text"
-                              class="form-control bg-light"
-                              id="exampleFormControlInput1"
-                              placeholder="Address"
-                            />
-                          </div>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
-                      <a class="submit-btn" href="">Submit</a>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>

@@ -25,6 +25,7 @@ use App\Http\Controllers\CustomerReviewController as review;
 use App\Http\Controllers\BlogController as blog;
 use App\Http\Controllers\AboutUsController as about;
 use App\Http\Controllers\AboutUsMotiveController as aboutMotive;
+use App\Http\Controllers\CustomerQueryController as cquery;
 
 
 /* Middleware */
@@ -59,8 +60,15 @@ Route::get('/about.page', [front::class, 'aboutUs'])->name('about.page');
 /* search property */
 Route::get('/search', [front::class, 'search'])->name('search');
 
+/* contact page */
+Route::get('/contact', [front::class, 'contactUs'])->name('contact');
+
 /* single property */
 Route::get('/singleProp/{slug}',[front::class,'singleProperty'])->name('sProperty');
+
+/* Customer query */
+Route::post('customer-query',[cquery::class,'customerQuery'])->name('customer.query');
+
 /* Subscriber email */
 Route::post('/subscriber',[front::class,'subscriber'])->name('subscriber.email');
 
@@ -68,6 +76,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
         /* settings */
+        
         Route::resource('users',user::class,['as'=>'admin']);
         Route::resource('admin',admin::class,['as'=>'admin']);
         Route::resource('country',country::class,['as'=>'admin']);
@@ -90,6 +99,9 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('blog',blog::class,['as'=>'admin']);
         Route::resource('about',about::class,['as'=>'admin']);
         Route::resource('aboutMotive',aboutMotive::class,['as'=>'admin']);
+        Route::resource('cquery',cquery::class,['as'=>'admin']);
+        
+        Route::get('/query-view', [cquery::class,'queryView'])->name('customer-query-view');
 
     });
 });

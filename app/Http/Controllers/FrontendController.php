@@ -177,6 +177,18 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function contactUs()
+    {
+        $homePage = home_page::latest()->take(1)->first();
+
+        return view('frontend.contact',compact('homePage'));
+    }
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function subscriber(Request $request)
     {
         $validator = Validator::make($request->all(), [

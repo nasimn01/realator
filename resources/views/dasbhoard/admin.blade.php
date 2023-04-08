@@ -80,10 +80,38 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Profile Visit</h4>
+                            <h4>Customer Queries</h4>
                         </div>
                         <div class="card-body">
-                            <div id="chart-profile-visit"></div>
+                            <div class="table-responsive">
+                                {{--<!-- <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">{{__('#SL')}}</th>
+                                            <th scope="col">{{__('Name')}}</th>
+                                            <th scope="col">{{__('Contact')}}</th>
+                                            <th scope="col">{{__('Email')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($cquery as $p)
+                                        <tr>
+                                            <th scope="row">{{ ++$loop->index }}</th>
+                                            <td>{{$p->name}}</td>
+                                            <td>{{$p->phone}}</td>
+                                            <td>{{$p->email}}</td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <th colspan="4" class="text-center">No Data Found</th>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-end my-3">
+                                    {!! $cquery->links()!!}
+                                </div> -->--}}
+                            </div>
                         </div>
                     </div>
                 </div>

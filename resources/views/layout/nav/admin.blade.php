@@ -61,6 +61,9 @@
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.aboutMotive.index')}}">{{__('About Us Motive')}}</a>
             </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="{{route(currentUser().'.cquery.index')}}">{{__('Customer Query')}}</a>
+            </li>
         </ul>
     </li>
     <!-- <li class="sidebar-item has-sub">
