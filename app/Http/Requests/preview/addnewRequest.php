@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\query;
+namespace App\Http\Requests\preview;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 
-class updateRequest extends FormRequest
+class addnewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +21,10 @@ class updateRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules(Request $r)
+    public function rules()
     {
-        $id=encryptor('decrypt',$r->uptoken);
         return [
-            'phoneNumber'=>'required|unique:customer_queries,phone'.$id,
-            'emailAddress'=>'required',
+            'emailAddress'=>'required|unique:property_reviews,email',
         ];
     }
 

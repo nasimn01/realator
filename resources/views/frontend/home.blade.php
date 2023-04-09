@@ -436,23 +436,29 @@
       </div>
       <div class="row pt-3 mt-5">
         @forelse($location as $loca)
-        <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
-          <div  style="background-image: url('{{ asset('uploads/location/thumb/'.$loca->feature_img)}}');">
-            <div class="fifth-section-card px-1 pb-1 pt-2">
-              <div class="fourth-button mt-2 me-2 float-end text-light">
-                <button
-                  type="button"
-                  class="fifth-card-button btn py-1 mx-2 text-light"
-                >
-                {{$loca->properties->count()}} Property
-                </button>
-              </div>
-              <div class="fifth-card-text ps-3">
-                <p class="text-light fw-semibold">{{$loca->name}}</p>
+        
+          <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
+            <div  style="background-image: url('{{ asset('uploads/location/thumb/'.$loca->feature_img)}}');">
+              <div class="fifth-section-card px-1 pb-1 pt-2">
+                <div class="fourth-button mt-2 me-2 float-end text-light">
+                  <button
+                    type="button"
+                    class="fifth-card-button btn py-1 mx-2 text-light"
+                  >
+                  <a href="{{ route('search') }}" style="text-decoration: none; color:white;">
+                  {{$loca->properties->count()}} Property
+                  </a>
+                  </button>
+                </div>
+                <div class="fifth-card-text ps-3">
+                  <a href="{{ route('search') }}" style="text-decoration: none; color:white;">
+                  <p class="text-light fw-semibold">{{$loca->name}}</p>
+                   </a>
+                </div>
               </div>
             </div>
-          </div>
-        </dic>
+          </dic>
+        
         @empty
         @endforelse
       </div>
@@ -520,11 +526,15 @@
                   type="button"
                   class="fifth-card-button btn py-1 mx-2 text-light"
                 >
+                <a href="{{route('blog-page')}}" style="text-decoration: none; color:white;">
                   {{$b->property_cat?->name}}
+                </a>
                 </button>
               </div>
               <div class="fifth-card-text ps-3">
+                <a href="{{route('blog-page')}}" style="text-decoration: none; color:white;">
                 <p class="text-light fw-semibold">{{$b->title}}</p>
+                </a>
               </div>
             </div>
           </div>

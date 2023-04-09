@@ -12,4 +12,5 @@ class blog extends Model
     public function property_cat(){
         return $this->belongsTo(property_category::class, 'property_category_id','id');
     }
+    
 }

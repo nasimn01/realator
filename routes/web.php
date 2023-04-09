@@ -26,6 +26,7 @@ use App\Http\Controllers\BlogController as blog;
 use App\Http\Controllers\AboutUsController as about;
 use App\Http\Controllers\AboutUsMotiveController as aboutMotive;
 use App\Http\Controllers\CustomerQueryController as cquery;
+use App\Http\Controllers\PropertyReviewController as preview;
 
 
 /* Middleware */
@@ -63,11 +64,17 @@ Route::get('/search', [front::class, 'search'])->name('search');
 /* contact page */
 Route::get('/contact', [front::class, 'contactUs'])->name('contact');
 
+/* blog page */
+Route::get('/blog-page', [front::class, 'blog'])->name('blog-page');
+
 /* single property */
 Route::get('/singleProp/{slug}',[front::class,'singleProperty'])->name('sProperty');
 
 /* Customer query */
 Route::post('customer-query',[cquery::class,'customerQuery'])->name('customer.query');
+
+/* Property reviews */
+Route::post('property-review',[preview::class,'store'])->name('preview');
 
 /* Subscriber email */
 Route::post('/subscriber',[front::class,'subscriber'])->name('subscriber.email');

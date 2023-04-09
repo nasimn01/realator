@@ -223,7 +223,7 @@
                       class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 rating"
                     >
                       <div class="col-4">
-                        <p>4.5</p>
+                        <p>{{$average}}</p>
                         <p>Out of 5.00</p>
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
@@ -244,7 +244,7 @@
                         >
                           <div
                             class="progress-bar bg-warning"
-                            style="width: 80%"
+                            style="width: {{$property_rating}}%"
                           ></div>
                         </div>
                         <p>Location</p>
@@ -259,7 +259,7 @@
                         >
                           <div
                             class="progress-bar bg-warning"
-                            style="width: 80%"
+                            style="width: {{$location_rating}}%"
                           ></div>
                         </div>
                       </div>
@@ -276,7 +276,7 @@
                         >
                           <div
                             class="progress-bar bg-warning"
-                            style="width: 80%"
+                            style="width: {{$value_of_money_rating}}%"
                           ></div>
                         </div>
                         <p>Support</p>
@@ -291,7 +291,7 @@
                         >
                           <div
                             class="progress-bar bg-warning"
-                            style="width: 80%"
+                            style="width: {{$agent_support_rating}}%"
                           ></div>
                         </div>
                       </div>
@@ -300,42 +300,23 @@
                     <hr />
                     <!-- Reating Comment -->
                     <div>
-                    <div class="row rating-comment">
-                        <div class="col-sm-2 mb-4">
-                          <img src="{{asset('./resource/img/user.png')}}" alt="" />
-                        </div>
-                        <div class="col-sm-10">
-                          <p>Mr. Jone</p>
-                          <p>admin@email.com</p>
-                          <p>5 Star</p>
-                          <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Aperiam suscipit laboriosam, nulla obcaecati
-                            consequuntur id maiores voluptatibus necessitatibus
-                            illo tempora voluptas eligendi doloribus ex ipsam
-                            molestias quam distinctio? Rem, odit!
-                          </p>
-                        </div>
-                      </div>
-                      <br />
-                      <hr />
+                      @foreach($property_review as $p)
                       <div class="row rating-comment">
                         <div class="col-sm-2 mb-4">
                           <img src="{{asset('./resource/img/user.png')}}" alt="" />
                         </div>
                         <div class="col-sm-10">
-                          <p>Mr. Jone</p>
-                          <p>admin@email.com</p>
-                          <p>5 Star</p>
+                          <p>{{$p->name}}</p>
+                          <p>{{$p->email}}</p>
+                          <p>{{$p->property_rating}} Star</p>
                           <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Aperiam suscipit laboriosam, nulla obcaecati
-                            consequuntur id maiores voluptatibus necessitatibus
-                            illo tempora voluptas eligendi doloribus ex ipsam
-                            molestias quam distinctio? Rem, odit!
+                            {{$p->message}}
                           </p>
                         </div>
                       </div>
+                      <br />
+                      <hr />
+                      @endforeach
                     </div>
                   </div>
                 </div>
@@ -361,88 +342,86 @@
                   class="accordion-collapse collapse show"
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
-                  <div class="accordion-body">
-                    <div class="row star-section review mb-3">
-                      <div class="col-sm-12 col-md-12 col-lg-4">
-                        <p>Property</p>
-                        <div class="d-flex star">
-                          <input type="radio" name="property" id="property1"/><label for="property1"></label>
-                          <input type="radio" name="property" id="property2"/><label for="property2"></label>
-                          <input type="radio" name="property" id="property3"/><label for="property3"></label>
-                          <input type="radio" name="property" id="property4"/><label for="property4"></label>
-                          <input type="radio" name="property" id="property5"/><label for="property5"></label>
+                  <form action="{{route('preview')}}" method="post">
+                    @csrf
+                    <div class="accordion-body">
+                        @if(Session::has('response'))
+                            {!!Session::get('response')['message']!!}
+                        @endif
+                      <div class="row star-section review mb-3">
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                          <p>Property</p>
+                          <div class="d-flex star">
+                            <input type="radio" name="property" value="5" id="property1"/><label for="property1"></label>
+                            <input type="radio" name="property" value="4" id="property2"/><label for="property2"></label>
+                            <input type="radio" name="property" value="3" id="property3"/><label for="property3"></label>
+                            <input type="radio" name="property" value="2" id="property4"/><label for="property4"></label>
+                            <input type="radio" name="property" value="1" id="property5"/><label for="property5"></label>
+                          </div>
+                          <div class="mt-5 star-section">
+                            <p>Value of Money</p>
+                            <div class="d-flex star mb-3">
+                              <input type="radio" name="value_of_Money" value="5" id="value-of-Money1"/><label for="value-of-Money1"></label>
+                              <input type="radio" name="value_of_Money" value="4" id="value-of-Money2"/><label for="value-of-Money2"></label>
+                              <input type="radio" name="value_of_Money" value="3" id="value-of-Money3"/><label for="value-of-Money3"></label>
+                              <input type="radio" name="value_of_Money" value="2" id="value-of-Money4"/><label for="value-of-Money4"></label>
+                              <input type="radio" name="value_of_Money" value="1" id="value-of-Money5"/><label for="value-of-Money5"></label>
+                            </div>
+                          </div>
                         </div>
-                        <div class="mt-5 star-section">
-                          <p>Value of Money</p>
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                          <p>Location</p>
                           <div class="d-flex star mb-3">
-                            <input type="radio" name="value-of-Money" id="value-of-Money1"/><label for="value-of-Money1"></label>
-                            <input type="radio" name="value-of-Money" id="value-of-Money2"/><label for="value-of-Money2"></label>
-                            <input type="radio" name="value-of-Money" id="value-of-Money3"/><label for="value-of-Money3"></label>
-                            <input type="radio" name="value-of-Money" id="value-of-Money4"/><label for="value-of-Money4"></label>
-                            <input type="radio" name="value-of-Money" id="value-of-Money5"/><label for="value-of-Money5"></label>
+                            <input type="radio" name="location" value="5" id="location1"/><label for="location1"></label>
+                            <input type="radio" name="location" value="4" id="location2"/><label for="location2"></label>
+                            <input type="radio" name="location" value="3" id="location3"/><label for="location3"></label>
+                            <input type="radio" name="location" value="2" id="location4"/><label for="location4"></label>
+                            <input type="radio" name="location" value="1" id="location5"/><label for="location5"></label>
+                          </div>
+                          <div class="my-5">
+                            <p>Agent Support</p>
+                            <div class="d-flex star mb-3">
+                              <input type="radio" name="agent_support" value="5" id="agent-support1"/><label for="agent-support1"></label>
+                              <input type="radio" name="agent_support" value="4" id="agent-support2"/><label for="agent-support2"></label>
+                              <input type="radio" name="agent_support" value="3" id="agent-support3"/><label for="agent-support3"></label>
+                              <input type="radio" name="agent_support" value="2" id="agent-support4"/><label for="agent-support4"></label>
+                              <input type="radio" name="agent_support" value="1" id="agent-support5"/><label for="agent-support5"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                          <div class="avarege-ratting">
+                            <p>5</p>
+                            <span>Avarege Ratting</span>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4">
-                        <p>Location</p>
-                        <div class="d-flex star mb-3">
-                          <input type="radio" name="location" id="location1"/><label for="location1"></label>
-                          <input type="radio" name="location" id="location2"/><label for="location2"></label>
-                          <input type="radio" name="location" id="location3"/><label for="location3"></label>
-                          <input type="radio" name="location" id="location4"/><label for="location4"></label>
-                          <input type="radio" name="location" id="location5"/><label for="vlocation5"></label>
-                        </div>
-                        <div class="my-5">
-                          <p>Agent Support</p>
-                          <div class="d-flex star mb-3">
-                            <input type="radio" name="agent-support" id="agent-support1"/><label for="agent-support1"></label>
-                            <input type="radio" name="agent-support" id="agent-support2"/><label for="agent-support2"></label>
-                            <input type="radio" name="agent-support" id="agent-support3"/><label for="agent-support3"></label>
-                            <input type="radio" name="agent-support" id="agent-support4"/><label for="agent-support4"></label>
-                            <input type="radio" name="agent-support" id="agent-support5"/><label for="agent-support5"></label>
+                      <!-- Comment Form -->
+                      <div class="mb-3 mt-5 comment-form">
+                        <input type="hidden" name="property_id" value="{{$singleProp->id}}">
+
+                        <textarea  class="form-control bg-light mb-3" name="message" rows="3" placeholder="Your Comment"></textarea>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="mb-3">
+                              <input  type="text" class="form-control bg-light" name="name" placeholder="Your Name"/>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="mb-3">
+                              <input type="email" class="form-control bg-light" name="emailAddress" placeholder="Email address" required/>
+                              @if($errors->has('emailAddress'))
+                                  <small class="d-block text-danger">
+                                      {{$errors->first('emailAddress')}}
+                                  </small>
+                              @endif
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4">
-                        <div class="avarege-ratting">
-                          <p>5</p>
-                          <span>Avarege Ratting</span>
-                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                       </div>
                     </div>
-                    <!-- Comment Form -->
-                    <div class="mb-3 mt-5 comment-form">
-                      <textarea
-                        class="form-control bg-light mb-3"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
-                        placeholder="Your Comment"
-                      ></textarea>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="mb-3">
-                            <input
-                              type="text"
-                              class="form-control bg-light"
-                              id="exampleFormControlInput1"
-                              placeholder="Your Name"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="mb-3">
-                            <input
-                              type="email"
-                              class="form-control bg-light"
-                              id="exampleFormControlInput1"
-                              placeholder="Email address"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <a class="submit-btn" href="">Submit</a>
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -474,6 +453,7 @@
                         @if(Session::has('response'))
                             {!!Session::get('response')['message']!!}
                         @endif
+                        <input type="hidden" name="property_id" value="{{$singleProp->id}}">
                         <textarea class="form-control bg-light mb-3" name="message" rows="3" placeholder="Massege"></textarea>
                         <div class="row">
                           <div class="col-sm-6">
@@ -484,22 +464,22 @@
                           <div class="col-sm-6">
                             <div class="mb-3">
                               <input type="email" class="form-control bg-light" name="emailAddress" placeholder="Email address" required/>
+                              @if($errors->has('eamilAddress'))
+                                  <small class="d-block text-danger">
+                                      {{$errors->first('eamilAddress')}}
+                                  </small>
+                              @endif
                             </div>
-                            @if($errors->has('eamilAddress'))
-                                <small class="d-block text-danger">
-                                    {{$errors->first('eamilAddress')}}
-                                </small>
-                            @endif
                           </div>
                           <div class="col-sm-6">
                             <div class="mb-3">
-                              <input type="number" class="form-control bg-light" name="phoneNumber" id="" placeholder="Your Mobile Number" required/>
+                              <input type="text" class="form-control bg-light" name="phoneNumber" id="" placeholder="Your Mobile Number" required/>
+                              @if($errors->has('phoneNumber'))
+                                  <small class="d-block text-danger">
+                                      {{$errors->first('phoneNumber')}}
+                                  </small>
+                              @endif
                             </div>
-                            @if($errors->has('phoneNumber'))
-                                <small class="d-block text-danger">
-                                    {{$errors->first('phoneNumber')}}
-                                </small>
-                            @endif
                           </div>
                           <div class="col-sm-6">
                             <div class="mb-3">
@@ -507,7 +487,7 @@
                             </div>
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                       </div>
                     </form>
                   </div>

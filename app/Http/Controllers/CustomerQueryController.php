@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\customer_query;
+use App\Models\property;
 use Illuminate\Http\Request;
 use App\Http\Requests\query\addnewRequest;
 use App\Http\Requests\query\updateRequest;
@@ -86,6 +87,7 @@ class CustomerQueryController extends Controller
         try{
             $cq= new customer_query;
             $cq->name = $r->name;
+            $cq->property_id = $r->property_id;
             $cq->phone = $r->phoneNumber;
             $cq->email = $r->emailAddress;
             $cq->address = $r->address;
@@ -112,9 +114,11 @@ class CustomerQueryController extends Controller
      * @param  \App\Models\customer_query  $customer_query
      * @return \Illuminate\Http\Response
      */
-    public function show(customer_query $customer_query)
+    public function show($id)
     {
-        //
+        $query = customer_query::findOrFail(encryptor('decrypt',$id));
+        $singleProp = property::where('id',[$query->property_id])->first();
+        return view('query.show',compact('query','singleProp'));
     }
 
     /**

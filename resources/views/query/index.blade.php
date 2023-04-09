@@ -20,6 +20,9 @@
                     <div>
                         {{date('H:i:s', strtotime($c->created_at))}}
                     </div>
+                    <div>
+                        <a href="{{route(currentUser().'.cquery.show',encryptor('encrypt',$c->id))}}" class="btn btn-sm btn-info">View Property</a>
+                    </div>
                 </div>
                 <div class="col-sm-10">
                     <h4>{{$c->name}}</h4>

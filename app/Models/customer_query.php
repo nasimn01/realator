@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class customer_query extends Model
 {
     use HasFactory,SoftDeletes;
+    public function prop(){
+        return $this->belongsTo(property::class, 'property_id','id');
+    }
 }

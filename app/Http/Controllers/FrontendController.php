@@ -17,6 +17,7 @@ use App\Models\founder;
 use Illuminate\Http\Request;
 use App\Http\Traits\ImageHandleTraits;
 use App\Models\advance_feature;
+use App\Models\property_review;
 use App\Models\ameneties;
 use Illuminate\Support\Facades\Validator;
 use Brian2694\Toastr\Facades\Toastr;
@@ -152,10 +153,19 @@ class FrontendController extends Controller
 
         $feature_property = property::where('is_feature',1)->get();
         $singleProp = property::where('id', $slug)->first();
+
+        $property_review = property_review::where('property_id',[$singleProp->id])->get();
+        $property_rating = property_review::where('property_id',[$singleProp->id])->avg('property_rating') * 20;
+        $location_rating = property_review::where('property_id',[$singleProp->id])->avg('location_rating') * 20;
+        $value_of_money_rating = property_review::where('property_id',[$singleProp->id])->avg('value_of_money_rating') * 20;
+        $agent_support_rating = property_review::where('property_id',[$singleProp->id])->avg('agent_support_rating') * 20;
+        $overall_average = property_review::where('property_id',[$singleProp->id])->avg('property_rating', 'location_rating', 'value_of_money_rating', 'agent_support_rating');
+        $average = number_format($overall_average, 1);
+
         $ame = ameneties::whereIn('id',explode(',',$singleProp->ameneties))->get();
         $adv = advance_feature::whereIn('id',explode(',',$singleProp->advance_feature))->get();
         $propPhoto = property_photo::whereIn('property_id',[$singleProp->id])->get();
-        return view('frontend.singleProperty',compact('singleProp','propPhoto','homePage','ame','adv','feature_property'));
+        return view('frontend.singleProperty',compact('singleProp','propPhoto','homePage','ame','adv','feature_property','property_review','property_rating','location_rating','value_of_money_rating','agent_support_rating','average'));
     }
      /**
      * Show the form for creating a new resource.
@@ -183,6 +193,19 @@ class FrontendController extends Controller
         $homePage = home_page::latest()->take(1)->first();
 
         return view('frontend.contact',compact('homePage'));
+    }
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function blog()
+    {
+        $homePage = home_page::latest()->take(1)->first();
+        $blog = blog::paginate(10);
+
+        return view('frontend.blog',compact('homePage','blog'));
     }
      /**
      * Show the form for creating a new resource.

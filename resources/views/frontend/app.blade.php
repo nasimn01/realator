@@ -12,6 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+      {{-- tostr css --}}
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <!-- Bootstrap Icon -->
     <link
       rel="stylesheet"
@@ -181,6 +183,10 @@
     <!-- JS File -->
     <script src="{{ asset('resource/js/app.js')}}"></script>
     @stack('scripts')
+
+    {{-- tostr --}}
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>
 

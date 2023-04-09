@@ -7,6 +7,8 @@ use App\Models\property_category;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Traits\ImageHandleTraits;
+use App\Models\property;
+use App\Models\property_photo;
 use Exception;
 
 class BlogController extends Controller
@@ -72,7 +74,7 @@ class BlogController extends Controller
      * @param  \App\Models\blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(blog $blog)
+    public function show($id)
     {
         //
     }

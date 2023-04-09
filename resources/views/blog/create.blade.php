@@ -36,12 +36,6 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="details">Details</label>
-                                            <textarea name="details" class="form-control" id="details" rows="2">{{old('details')}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
                                             <label for="date">Date</label>
                                             <input type="date" id="date" class="form-control" value="{{old('date')}}" name="date">
                                         </div>
@@ -53,9 +47,15 @@
                                             <p class="text-danger">Required width 280px and height 332px*</p>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="details">Details</label>
+                                            <textarea name="details" class="form-control" id="default" rows="2">{{old('details')}}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 d-flex justify-content-end">
+                                    <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
                                     </div>
                                 </div>
@@ -69,3 +69,7 @@
     <!-- // Basic multiple Column Form section end -->
 </div>
 @endsection
+@push('scripts')
+<script src="{{ asset('/assets/extensions/tinymce/tinymce.min.js')}}"></script>
+<script src="{{ asset('/assets/js/pages/tinymce.js')}}"></script>
+@endpush

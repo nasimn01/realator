@@ -158,24 +158,6 @@
       </div>
       <!-- Submit Your Quary -->
         <div class="accordion my-4" id="accordionPanelsStayOpenExample">
-            <div class="accordion-item shadow">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseEight"
-                aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne"
-                >
-                Submit Your Quary
-                </button>
-            </h2>
-            <div
-                id="panelsStayOpen-collapseEight"
-                class="accordion-collapse collapse show"
-                aria-labelledby="panelsStayOpen-headingOne"
-            >
                 <div class="accordion-body">
                 <!-- Comment Form -->
                 <form action="{{route('customer.query')}}" method="post">
@@ -203,7 +185,7 @@
                         </div>
                         <div class="col-sm-6">
                         <div class="mb-3">
-                            <input type="number" class="form-control bg-light" name="phoneNumber" id="" placeholder="Your Mobile Number" required/>
+                            <input type="text" class="form-control bg-light" name="phoneNumber" id="" placeholder="Your Mobile Number" required/>
                         </div>
                         @if($errors->has('phoneNumber'))
                             <small class="d-block text-danger">

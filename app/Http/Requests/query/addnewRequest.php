@@ -32,7 +32,7 @@ class addnewRequest extends FormRequest
     public function messages(){
         return [
             'required' => "The :attribute filed is required",
-            'unique' => "The :attribute already used. Please try another",
+            'unique' => "This :attribute is already used. Please try another",
         ];
     }
 }

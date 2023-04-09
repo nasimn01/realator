@@ -21,7 +21,7 @@
                 {{$about->long_description}}
               </p>
               <!-- list start -->
-              <div class="pb-2">
+              <div class="pb-2 text-center">
                 <img src="{{asset('uploads/about/img2/thumb/'.$about->image_two)}}"
                   class="img-fluid third-section-pic"
                   alt=""/>
