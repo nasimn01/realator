@@ -33,7 +33,7 @@
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$p->feature}}</td>
-                                <td><img width="50px" src="{{asset('uploads/advance_feature/'.$p->icon)}}" alt=""></td>
+                                <td><img width="30px" src="{{asset('uploads/advance_feature/thumb/'.$p->icon)}}" alt=""></td>
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.advance.edit',encryptor('encrypt',$p->id))}}">

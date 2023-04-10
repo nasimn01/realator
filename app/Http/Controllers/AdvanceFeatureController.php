@@ -44,7 +44,7 @@ class AdvanceFeatureController extends Controller
             $adv=new advance_feature;
             $adv->feature = $request->name;
             if($request->has('feature'))
-            $adv->icon=$this->resizeImage($request->feature,'uploads/advance_feature',true,200,200,true);
+            $adv->icon=$this->resizeImage($request->feature,'uploads/advance_feature',true,20,20,true);
             if($adv->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.advance.index');
@@ -100,7 +100,7 @@ class AdvanceFeatureController extends Controller
             $path='uploads/advance_feature';
             if($request->has('feature') && $request->feature)
             if($this->deleteImage($adv->icon,$path))
-                $adv->icon=$this->resizeImage($request->feature,$path,true,200,200,true);
+                $adv->icon=$this->resizeImage($request->feature,$path,true,20,20,true);
 
             if($adv->save()){
             Toastr::success('Updated Successfully!');

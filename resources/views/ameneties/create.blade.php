@@ -25,6 +25,7 @@
                                         <div class="form-group">
                                             <label for="Picture">Feature icon</label>
                                             <input type="file" id="feature" class="form-control" name="feature">
+                                            <p class="text-danger">Required width 20px and height 20px*</p>
                                         </div>
                                     </div>
                                 </div>

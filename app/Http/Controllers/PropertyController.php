@@ -64,6 +64,7 @@ class PropertyController extends Controller
             $pro->advance_feature = $adv;
             $pro->ameneties = $amenities;
             $pro->video_link = $request->video_link;
+            $pro->map_link = $request->map;
             $pro->status = $request->status;
             $pro->is_feature = $request->is_feature;
             if($request->has('feature_photo'))
@@ -136,6 +137,7 @@ class PropertyController extends Controller
             $pro->advance_feature = $adv;
             $pro->ameneties = $amenities;
             $pro->video_link = $request->video_link;
+            $pro->map_link = $request->map;
             $pro->status = $request->status;
             $pro->is_feature = $request->is_feature;
 

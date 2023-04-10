@@ -44,7 +44,7 @@ class AmenetiesController extends Controller
             $adv=new ameneties;
             $adv->name = $request->name;
             if($request->has('feature'))
-            $adv->icon=$this->resizeImage($request->feature,'uploads/ameneties',true,200,200,true);
+            $adv->icon=$this->resizeImage($request->feature,'uploads/ameneties',true,20,20,true);
             if($adv->save()){
             Toastr::success('Create Successfully!');
             return redirect()->route(currentUser().'.ameneties.index');
@@ -100,7 +100,7 @@ class AmenetiesController extends Controller
             $path='uploads/ameneties';
             if($request->has('feature') && $request->feature)
             if($this->deleteImage($adv->icon,$path))
-                $adv->icon=$this->resizeImage($request->feature,$path,true,200,200,true);
+                $adv->icon=$this->resizeImage($request->feature,$path,true,20,20,true);
 
             if($adv->save()){
             Toastr::success('Updated Successfully!');

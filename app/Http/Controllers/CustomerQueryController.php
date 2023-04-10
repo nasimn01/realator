@@ -116,9 +116,11 @@ class CustomerQueryController extends Controller
      */
     public function show($id)
     {
-        $query = customer_query::findOrFail(encryptor('decrypt',$id));
-        $singleProp = property::where('id',[$query->property_id])->first();
-        return view('query.show',compact('query','singleProp'));
+        $query = customer_query::findOrFail(encryptor('decrypt', $id));
+        $singleProp = property::where('id', [$query->property_id])->first();
+        $singleProp = $singleProp ? $singleProp : 'Not Found';
+
+        return view('query.show', compact('query', 'singleProp'));
     }
 
     /**

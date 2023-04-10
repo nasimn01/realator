@@ -51,7 +51,7 @@
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
                   <div class="accordion-body">
-                  {{$singleProp->description}}
+                  {!! $singleProp->description !!}
                   </div>
                 </div>
               </div>
@@ -82,7 +82,8 @@
                     >
                     @foreach($adv as $d)
                     <div class="col mb-3">
-                      <i class="bi bi-taxi-front"></i>
+                      <!-- <i class="bi bi-taxi-front"></i> -->
+                      <img src="{{asset('uploads/advance_feature/thumb/'.$d->icon)}}" alt="">
                       <span>{{$d->feature}}</span>
                     </div>
                     @endforeach
@@ -117,7 +118,8 @@
                     >
                     @foreach($ame as $a)
                     <div class="col mb-3">
-                      <i class="bi bi-bus-front"></i>
+                      <!-- <i class="bi bi-bus-front"></i> -->
+                      <img src="{{asset('uploads/ameneties/thumb/'.$a->icon)}}" alt="">
                       <span>{{$a->name}}</span>
                     </div>
                     @endforeach
@@ -185,7 +187,7 @@
                   <div class="accordion-body">
                     <div class="ratio ratio-16x9">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32699395.56485871!2d-122.29098629477929!3d59.98501601169469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0d03d337cc6ad9%3A0x9968b72aa2438fa5!2sCanada!5e0!3m2!1sen!2sbd!4v1677739821031!5m2!1sen!2sbd"
+                        src="{{$singleProp->map_link}}"
                         width="600"
                         height="450"
                         style="border: 0"
@@ -390,8 +392,8 @@
                           </div>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-4">
-                          <div class="avarege-ratting">
-                            <p>5</p>
+                          <div class="avarege-ratting" >
+                            <p id="average-values">5</p>
                             <span>Avarege Ratting</span>
                           </div>
                         </div>
@@ -535,3 +537,40 @@
       </div>
     </main>
 @endsection
+@push('scripts')
+<!-- JavaScript code to calculate and display the average value for each set -->
+<script>
+  // const sets = ["property", "value_of_Money", "location", "agent_support"];
+
+  // // Add event listener to each radio input in each set
+  // for (let i = 0; i < sets.length; i++) {
+  //   const radios = document.getElementsByName(sets[i]);
+  //   for (let j = 0; j < radios.length; j++) {
+  //     radios[j].addEventListener("change", () => {
+  //       // Calculate sum of checked values across all sets
+  //       let checkedSum = 0;
+  //       for (let k = 0; k < sets.length; k++) {
+  //         const checkedRadios = document.querySelectorAll('input[name="' + sets[k] + '"]:checked');
+  //         for (let l = 0; l < checkedRadios.length; l++) {
+  //           checkedSum += parseInt(checkedRadios[l].value);
+  //         }
+  //       }
+  //       // Calculate overall average based on checked sum
+  //       const overallAverage = checkedSum / (sets.length);
+  //       // Display overall average as rounded value without text
+  //       document.getElementById("average-values").innerHTML = overallAverage.toFixed(1);
+  //     });
+  //   }
+  // }
+  const sets = ["property", "value_of_Money", "location", "agent_support"];
+
+  document.addEventListener("change", () => {
+    const checkedSum = sets.reduce((sum, set) => {
+      const checkedRadios = document.querySelectorAll(`input[name="${set}"]:checked`);
+      return sum + [...checkedRadios].reduce((setSum, radio) => setSum + parseInt(radio.value), 0);
+    }, 0);
+    const overallAverage = checkedSum / sets.length;
+    document.getElementById("average-values").textContent = overallAverage.toFixed(1);
+  });
+</script>
+@endpush

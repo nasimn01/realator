@@ -73,12 +73,6 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea class="form-control" name="description" rows="2">{{old('description',$prop->description)}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
                                             <label for="location">Location</label>
                                             <select class="form-control form-select" name="location" id="location" required>
                                                 <option value="">Select Location</option>
@@ -88,6 +82,12 @@
                                                     <option value="">No Data found</option>
                                                 @endforelse
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea class="form-control" id="default" name="description">{{old('description',$prop->description)}}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -112,6 +112,12 @@
                                         <div class="form-group">
                                             <label for="video_link">Video link</label>
                                             <input type="text" id="video_link" class="form-control" name="video_link" value="{{old('video_link',$prop->video_link)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="map">Map Link</label>
+                                            <input type="text" id="map" class="form-control" name="map" value="{{old('map',$prop->map_link)}}">
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -147,3 +153,7 @@
     <!-- // Basic multiple Column Form section end -->
 </div>
 @endsection
+@push('scripts')
+<script src="{{ asset('/assets/extensions/tinymce/tinymce.min.js')}}"></script>
+<script src="{{ asset('/assets/js/pages/tinymce.js')}}"></script>
+@endpush
