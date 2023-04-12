@@ -21,21 +21,21 @@
                 <!-- COunter Box 1 -->
                 <div class="counter shadow-lg rounded-4 p-2 text-center">
                   <h3>2.0K</h3>
-                  <span>Premium Product</span>
+                  <span>Rent property</span>
                 </div>
               </div>
               <div class="col-sm-4 mb-4">
                 <!-- COunter Box 2 -->
                 <div class="counter shadow-lg rounded-4 p-2 text-center">
                   <h3>2.0K</h3>
-                  <span>Premium Product</span>
+                  <span>Sales property</span>
                 </div>
               </div>
               <div class="col-sm-4 mb-4">
                 <!-- COunter Box 3 -->
                 <div class="counter shadow-lg rounded-4 p-2 text-center">
                   <h3>2.0K</h3>
-                  <span>Premium Product</span>
+                  <span>Land property</span>
                 </div>
               </div>
             </div>
@@ -143,16 +143,16 @@
           <div class="col-sm-6 col-md-4 col-lg-3 col- my-3 px-2">
             <div class="card first-card shadow border border-0">
               <a href="{{route('sProperty',$loc->id)}}">
-                <img src="{{asset('uploads/property_feature/thumb/'.$loc->feature_photo)}}" class="card-img-top img-fluid" alt="..."/>
+                  <img src="{{asset('uploads/property_feature/thumb/'.$loc->feature_photo)}}" class="card-img-top img-fluid" alt="..."/>
+                <div class="card-body">
+                  <p class="card-amount">
+                    <span class="dollar-sign">$</span> USD {{$loc->price}}
+                  </p>
+                  <p class="card-text fw-bold">{{$loc->name}}</p>
+                  <p class="card-location">Location : {{$loc->locat?->name}}</p>
+                </div>
               </a>
-              <div class="card-body">
-                <p class="card-amount">
-                  <span class="dollar-sign">$</span> USD {{$loc->price}}
-                </p>
-                <p class="card-text fw-bold">{{$loc->name}}</p>
-                <p class="card-location">Location : {{$loc->locat?->name}}</p>
               </div>
-            </div>
           </div>
           @empty
           <div class="col-sm-6 col-md-4 col-lg-3 col- my-3 px-2">
@@ -432,7 +432,11 @@
       <div class="text-center">
         <p class="fs-5">Find Your Property</p>
         <!-- header -->
-        <h2 class="second-header fw-bold fs-2">Explore The City</h2>
+        <h2 class="second-header fw-bold fs-2">
+          <a href="{{ route('location.page') }}" style="text-decoration: none; color:#57c427;">
+            Explore The City
+          </a>
+        </h2>
       </div>
       <div class="row pt-3 mt-5">
         @forelse($location as $loca)
@@ -513,7 +517,9 @@
     <section class="container py-4 my-5">
       <div class="text-center">
         <!-- header -->
-        <h2 class="second-header fw-bold fs-2">Latest News</h2>
+        <h2 class="second-header fw-bold fs-2">
+          <a href="{{route('blog-page')}}" style="text-decoration: none; color:#57c427;">Latest News</a>
+        </h2>
         <p class="fs-5">For the latest Property Connect with us</p>
       </div>
       <div class="row mt-5">
@@ -526,13 +532,13 @@
                   type="button"
                   class="fifth-card-button btn py-1 mx-2 text-light"
                 >
-                <a href="{{route('blog-page')}}" style="text-decoration: none; color:white;">
+                <a href="{{route('sBlog',$b->id)}}" style="text-decoration: none; color:white;">
                   {{$b->property_cat?->name}}
                 </a>
                 </button>
               </div>
               <div class="fifth-card-text ps-3">
-                <a href="{{route('blog-page')}}" style="text-decoration: none; color:white;">
+                <a href="{{route('sBlog',$b->id)}}" style="text-decoration: none; color:white;">
                 <p class="text-light fw-semibold">{{$b->title}}</p>
                 </a>
               </div>

@@ -104,46 +104,36 @@
           <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
             <p class="footer-title">About</p>
             <ul class="nav flex-column">
-              <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Mission</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Vision</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Mission</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('about.page') }}">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('about.page') }}">Mission</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('about.page') }}">Vission</a></li>
             </ul>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
             <p class="footer-title">Companay</p>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="">Select Your City</a>
+                <a class="nav-link" href="{{ route('search') }}">Select Your City</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Select Your City</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="">Corporate Office</a>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="">Corporate Office</a>
+                <a class="nav-link" href="{{ route('search') }}">Select your type</a>
               </li>
             </ul>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
             <p class="footer-title">Others Link</p>
             <ul class="nav flex-column">
-              <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('search') }}">Property list</a></li>
               <li class="nav-item">
-                <a class="nav-link" href="">Corporate Office</a>
+                <a class="nav-link" href="">Location List</a>
               </li>
-              <li class="nav-item"><a class="nav-link" href="">Vision</a></li>
-              <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="">Select Your City</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="">Trams & Condition</a></li>
             </ul>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-3 text-center mb-5">
-            <img class="img-fluid" src="{{asset('uploads/logo/'.$homePage->logo)}}" alt="" />
+            <a href="{{route('front')}}">
+              <img class="img-fluid" src="{{asset('uploads/logo/'.$homePage->logo)}}" alt="" />
+            </a>
             <div class="share-icon mt-4">
               <a href="{{$homePage->facebook}}"><i style="color: #3b5998" class="bi bi-facebook"></i></a>
               <a href="{{$homePage->twitter}}"><i style="color: #00acee" class="bi bi-twitter"></i></a>

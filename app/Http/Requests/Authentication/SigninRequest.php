@@ -24,7 +24,7 @@ class SigninRequest extends FormRequest
     public function rules()
     {
         return [
-            'PhoneNumber'=>'required',
+            'EmailAddress'=>'required',
             'password'=>'required'
         ];
     }

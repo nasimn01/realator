@@ -320,6 +320,10 @@
                       <hr />
                       @endforeach
                     </div>
+                    <!-- Pagination -->
+            <div class="d-flex justify-content-end">
+                {!! $property_review->links()!!}
+            </div>
                   </div>
                 </div>
               </div>
@@ -513,21 +517,23 @@
               <p class="feature-proparty-title">Feature Proparty</p>
               @foreach($feature_property as $fp)
               <div class="features-seciton shadow p-3 rounded mb-4">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <img
-                      class="img-fluid rounded"
-                      src="{{asset('uploads/property_feature/thumb/'.$fp->feature_photo)}}"
-                      alt=""
-                    />
+                <a href="{{route('sProperty',$fp->id)}}">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <img
+                        class="img-fluid rounded"
+                        src="{{asset('uploads/property_feature/thumb/'.$fp->feature_photo)}}"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-sm-8">
+                      <p class="title">{{$fp->name}}</p>
+                      <p>{{date('j F, Y', strtotime($fp->created_at))}}</p>
+                      <p><i class="bi bi-geo-alt-fill"></i>{{$fp->locat?->name}}</p>
+                      <span>{{$fp->property_cat?->name}}</span>
+                    </div>
                   </div>
-                  <div class="col-sm-8">
-                    <p>{{$fp->name}}</p>
-                    <p>{{date('j F, Y', strtotime($fp->created_at))}}</p>
-                    <p><i class="bi bi-geo-alt-fill"></i>{{$fp->locat?->name}}</p>
-                    <span>{{$fp->property_cat?->name}}</span>
-                  </div>
-                </div>
+                </a>
               </div>
               @endforeach
             </div>

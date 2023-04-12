@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\customer_review;
+use App\Models\subscriber_email;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Traits\ImageHandleTraits;
@@ -20,6 +21,16 @@ class CustomerReviewController extends Controller
     {
         $customer = customer_review::paginate(10);
         return view('customer.index',compact('customer'));
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function subscriberList()
+    {
+        $subscriber = subscriber_email::paginate(10);
+        return view('subscriber.index',compact('subscriber'));
     }
 
     /**

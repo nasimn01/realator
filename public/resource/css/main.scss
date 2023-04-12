@@ -57,7 +57,8 @@ body {
 }
 // counter box
 .counter {
-    max-width: 120px;
+    width: 125px;
+    height: 90px;
 }
 .counter-box {
     margin-top: 50px;
@@ -114,10 +115,16 @@ body {
     font-weight: bolder;
 }
 .first-card {
-    border-radius: 50px 10px 10px 10px;
+    border-radius: 10px;
+}
+.first-card a {
+    text-decoration: none;
+}
+.first-card .card-amount {
+    color: $second-color;
 }
 .first-card img {
-    border-radius: 50px 10px 0 0;
+    border-radius: 10px 10px 0 0;
 }
 .card-body {
     font-weight: bolder;
@@ -604,6 +611,18 @@ body {
 
 .feature-proparty-title {
     font-weight: bold;
+}
+.features-seciton a {
+    text-decoration: none;
+}
+.product-card-seciton a {
+    text-decoration: none;
+}
+.features-seciton .title {
+    color: $second-color;
+}
+.product-card-seciton .title {
+    color: $second-color;
 }
 .features-seciton div:nth-of-type(2) p:nth-of-type(1) {
     font-weight: bold;

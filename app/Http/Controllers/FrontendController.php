@@ -69,8 +69,15 @@ class FrontendController extends Controller
 
         $properties = Property::query();
 
+        // if ($search != "") {
+        //     $properties->where('name', 'LIKE', '%'.$search.'%');
+        // }
         if ($search != "") {
-            $properties->where('name', 'LIKE', '%'.$search.'%');
+            $properties->where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('location', 'LIKE', '%'.$search.'%')
+                    ->orWhere('price', 'LIKE', '%'.$search.'%');
+            });
         }
         if ($propertyType != "") {
             $properties->where('property_category_id', $propertyType);
@@ -151,10 +158,10 @@ class FrontendController extends Controller
         
         $homePage = home_page::latest()->take(1)->first();
 
-        $feature_property = property::where('is_feature',1)->get();
+        $feature_property = property::where('is_feature',1)->latest()->take(10)->get();
         $singleProp = property::where('id', $slug)->first();
 
-        $property_review = property_review::where('property_id',[$singleProp->id])->get();
+        $property_review = property_review::where('property_id',[$singleProp->id])->paginate(10);
         $property_rating = property_review::where('property_id',[$singleProp->id])->avg('property_rating') * 20;
         $location_rating = property_review::where('property_id',[$singleProp->id])->avg('location_rating') * 20;
         $value_of_money_rating = property_review::where('property_id',[$singleProp->id])->avg('value_of_money_rating') * 20;
@@ -188,6 +195,20 @@ class FrontendController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+    public function location()
+    {
+        $location = location::paginate(10);
+        
+        $homePage = home_page::latest()->take(1)->first();
+
+        return view('frontend.location',compact('homePage','location'));
+    }
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
     public function contactUs()
     {
         $homePage = home_page::latest()->take(1)->first();
@@ -206,6 +227,19 @@ class FrontendController extends Controller
         $blog = blog::paginate(10);
 
         return view('frontend.blog',compact('homePage','blog'));
+    }
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function singleBlog($slug)
+    {
+        $homePage = home_page::latest()->take(1)->first();
+        $blog = blog::where('id', $slug)->first();
+
+        return view('frontend.singleBlog',compact('homePage','blog'));
     }
      /**
      * Show the form for creating a new resource.

@@ -55,7 +55,8 @@ body {
 }
 
 .counter {
-  max-width: 120px;
+  width: 125px;
+  height: 90px;
 }
 
 .counter-box {
@@ -114,11 +115,19 @@ body {
 }
 
 .first-card {
-  border-radius: 50px 10px 10px 10px;
+  border-radius: 10px;
+}
+
+.first-card a {
+  text-decoration: none;
+}
+
+.first-card .card-amount {
+  color: #1b1b1b;
 }
 
 .first-card img {
-  border-radius: 50px 10px 0 0;
+  border-radius: 10px 10px 0 0;
 }
 
 .card-body {
@@ -648,6 +657,22 @@ body {
 
 .feature-proparty-title {
   font-weight: bold;
+}
+
+.features-seciton a {
+  text-decoration: none;
+}
+
+.product-card-seciton a {
+  text-decoration: none;
+}
+
+.features-seciton .title {
+  color: #1b1b1b;
+}
+
+.product-card-seciton .title {
+  color: #1b1b1b;
 }
 
 .features-seciton div:nth-of-type(2) p:nth-of-type(1) {

@@ -57,6 +57,8 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
 /* About Page */
 Route::get('/about.page', [front::class, 'aboutUs'])->name('about.page');
+/* About Page */
+Route::get('/location.page', [front::class, 'location'])->name('location.page');
 
 /* search property */
 Route::get('/search', [front::class, 'search'])->name('search');
@@ -66,6 +68,7 @@ Route::get('/contact', [front::class, 'contactUs'])->name('contact');
 
 /* blog page */
 Route::get('/blog-page', [front::class, 'blog'])->name('blog-page');
+Route::get('/single-blog-page/{slug}',[front::class,'singleBlog'])->name('sBlog');
 
 /* single property */
 Route::get('/singleProp/{slug}',[front::class,'singleProperty'])->name('sProperty');
@@ -78,6 +81,7 @@ Route::post('property-review',[preview::class,'store'])->name('preview');
 
 /* Subscriber email */
 Route::post('/subscriber',[front::class,'subscriber'])->name('subscriber.email');
+
 
 Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
@@ -108,7 +112,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('aboutMotive',aboutMotive::class,['as'=>'admin']);
         Route::resource('cquery',cquery::class,['as'=>'admin']);
         
-        Route::get('/query-view', [cquery::class,'queryView'])->name('customer-query-view');
+        Route::get('/query-view', [cquery::class,'queryView'])->name('admin.customer-query-view');
+        Route::get('/subscriber-list', [review::class, 'subscriberList'])->name('admin.subscriber.list');
 
     });
 });

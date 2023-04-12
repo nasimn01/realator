@@ -57,7 +57,7 @@
                                                 @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <!-- <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">Image</label>
                                             <input type="file" id="image" class="form-control"
@@ -79,7 +79,7 @@
                                                 <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
                                             @endif
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">

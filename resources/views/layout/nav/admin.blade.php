@@ -11,17 +11,17 @@
             <span>{{__('Manage Website')}}</span>
         </a>
         <ul class="submenu">
-            <!-- <li class="submenu-item sidebar-item has-sub">
+            <li class="submenu-item sidebar-item has-sub">
                 <a href="#" class='sidebar-link'> {{__('Setting')}}</a>
                 <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.country.index')}}">{{__('Country')}}</a></li>
+                    <!-- <li class="py-1"><a href="{{route(currentUser().'.country.index')}}">{{__('Country')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.division.index')}}">{{__('Division')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.district.index')}}">{{__('District')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.district.index')}}">{{__('District')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.thana.index')}}">{{__('Thana')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.thana.index')}}">{{__('Thana')}}</a></li> -->
                     <li class="py-1"><a href="{{route(currentUser().'.admin.index')}}">{{__('Users')}}</a></li>
                 </ul>
-            </li> -->
+            </li>
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.home.index')}}">{{__('Home Page')}}</a>
             </li>
@@ -63,6 +63,9 @@
             </li>
             <li class="submenu-item sidebar-item has-sub">
                 <a href="{{route(currentUser().'.cquery.index')}}">{{__('Customer Query')}}</a>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="{{route(currentUser().'.subscriber.list')}}">{{__('Subscriber List')}}</a>
             </li>
         </ul>
     </li>

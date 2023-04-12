@@ -122,18 +122,18 @@ class AuthenticationController extends Controller
     }
     public function signInCheck(SigninRequest $request){
         try{
-            $user=User::where('contact_no',$request->PhoneNumber)->first();
+            $user=User::where('email',$request->EmailAddress)->first();
             if($user){
                 if(Hash::check($request->password , $user->password)){
                     $this->setSession($user);
                     return redirect()->route($user->role->identity.'.dashboard')->with($this->resMessageHtml(true,null,'Successfully login'));
                 }else
-                    return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number or password is wrong!'));
+                    return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your email or password is wrong!'));
             }else
-                return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number or password is wrong!'));
+                return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your email or password is wrong!'));
         }catch(Exception $e){
             //dd($e);
-            return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number or password is wrong!'));
+            return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your email or password is wrong!'));
         }
     }
 
