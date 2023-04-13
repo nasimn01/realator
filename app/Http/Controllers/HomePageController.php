@@ -47,6 +47,10 @@ class HomePageController extends Controller
             $home->title_2 = $request->title2;
             $home->title_3 = $request->title3;
             $home->contact_no = $request->contact;
+            $home->fb_message_link = $request->fb_message_link;
+            $home->whatsapp_number = $request->whatsapp_number;
+            $home->whatsapp_call_link = $request->whatsapp_call_link;
+            $home->sms_number = $request->sms_number;
             $home->facebook = $request->facebook;
             $home->twitter = $request->twitter;
             $home->linkedin = $request->linkedin;
@@ -111,6 +115,10 @@ class HomePageController extends Controller
             $home->title_2 = $request->title2;
             $home->title_3 = $request->title3;
             $home->contact_no = $request->contact;
+            $home->fb_message_link = $request->fb_message_link;
+            $home->whatsapp_number = $request->whatsapp_number;
+            $home->whatsapp_call_link = $request->whatsapp_call_link;
+            $home->sms_number = $request->sms_number;
             $home->facebook = $request->facebook;
             $home->twitter = $request->twitter;
             $home->linkedin = $request->linkedin;

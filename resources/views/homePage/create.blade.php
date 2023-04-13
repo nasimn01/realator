@@ -46,6 +46,30 @@
                                             <input type="text" name="contact" class="form-control" value="{{old('contact')}}" id="contact">
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="fb_message_link">FB Message Link</label>
+                                            <input type="text" name="fb_message_link" class="form-control" value="{{old('fb_message_link')}}" id="fb_message_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="whatsapp_number">Whatsapp Number</label>
+                                            <input type="text" name="whatsapp_number" class="form-control" value="{{old('whatsapp_number')}}" id="whatsapp_number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="whatsapp_call_link">Whatsapp Call Link</label>
+                                            <input type="text" name="whatsapp_call_link" class="form-control" value="{{old('whatsapp_call_link')}}" id="whatsapp_call_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="sms_number">SMS Number</label>
+                                            <input type="text" name="sms_number" class="form-control" value="{{old('sms_number')}}" id="sms_number">
+                                        </div>
+                                    </div>
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">

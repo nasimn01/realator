@@ -50,6 +50,30 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
+                                            <label for="fb_message_link">FB Message Link</label>
+                                            <input type="text" name="fb_message_link" class="form-control" value="{{old('fb_message_link',$home->fb_message_link)}}" id="fb_message_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="whatsapp_number">Whatsapp Number</label>
+                                            <input type="text" name="whatsapp_number" class="form-control" value="{{old('whatsapp_number',$home->whatsapp_number)}}" id="whatsapp_number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="whatsapp_call_link">Whatsapp Call Link</label>
+                                            <input type="text" name="whatsapp_call_link" class="form-control" value="{{old('whatsapp_call_link',$home->whatsapp_call_link)}}" id="whatsapp_call_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="sms_number">SMS Number</label>
+                                            <input type="text" name="sms_number" class="form-control" value="{{old('sms_number',$home->sms_number)}}" id="sms_number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
                                             <label for="contact_img">Contact Image</label>
                                             <input type="file" id="contact_img" class="form-control" name="contact_img">
                                             <p class="text-danger">Required width 439px and height 474px*</p>

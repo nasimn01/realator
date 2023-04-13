@@ -43,18 +43,19 @@ class SliderController extends Controller
         try{
             $slider=new Slider;
             if($request->has('Picture'))
-            $slider->image=$this->resizeImage($request->Picture,'uploads/Slide_image',true,659,368,false);
+                $slider->image=$this->resizeImage($request->Picture,'uploads/Slide_image',true,659,368,false);
             if($slider->save()){
-            Toastr::success('Slider Create Successfully!');
-            return redirect()->route(currentUser().'.slider.index');
+                Toastr::success('Slider Create Successfully!');
+                return redirect()->route(currentUser().'.slider.index');
             } else{
-            Toastr::success('Please try Again!');
-             return redirect()->back();
+                Toastr::success('Please try Again!');
+                return redirect()->back();
             }
 
         }
         catch (Exception $e){
-            dd($e);
+            //dd($e);
+            Toastr::error($e->getMessage());
             return back()->withInput();
 
         }

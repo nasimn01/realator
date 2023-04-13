@@ -26,13 +26,13 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Call</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->contact_no}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button shadow-lg">
-                      <a type="button" class="btn fs-4 fw-bold text-light py-0">
+                      <a href="tel:{{$homePage?->contact_no}}" class="btn fs-4 fw-bold text-light py-0">
                         Call Now
                       </a>
                     </div>
@@ -54,18 +54,15 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Chat</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->contact_no}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button-text shadow-lg">
-                      <button
-                        type="button"
-                        class="btn button-text fs-4 fw-bold py-0"
-                      >
+                      <a class="btn button-text fs-4 fw-bold py-0">
                         Chat Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -85,18 +82,15 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Video Call</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->whatsapp_number}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button-text shadow-lg">
-                      <button
-                        type="button"
-                        class="btn button-text fs-4 fw-bold py-0"
-                      >
+                      <a href="{{$homePage?->whatsapp_call_link}}" class="btn fs-4 button-text fw-bold py-0">
                         Call Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -116,18 +110,15 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Massege</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->sms_number}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button-text shadow-lg">
-                      <button
-                        type="button"
-                        class="btn fs-4 button-text fw-bold py-0"
-                      >
+                      <a href="sms:{{$homePage?->sms_number}}" class="btn fs-4 button-text fw-bold py-0">
                         Massege Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -144,7 +135,7 @@
               alt=""
             />
             <img
-              src="{{asset('uploads/contact_img/thumb/'.$homePage->contact_img)}}"
+              src="{{asset('uploads/contact_img/thumb/'.$homePage?->contact_img)}}"
               class="img-fluid p-3 fourth-section-pic"
               alt=""
             />

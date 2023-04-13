@@ -8,11 +8,11 @@
     <section class="container slider">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-6 mt-5 pt-5">
-          <h1>{{$homePage->title_1}}</h1>
+          <h1>{{$homePage?->title_1}}</h1>
           <!-- slider 1st Header -->
-          <h1>{{$homePage->title_2}}</h1>
+          <h1>{{$homePage?->title_2}}</h1>
           <!-- slider 2nd Header -->
-          <h1>{{$homePage->title_3}}</h1>
+          <h1>{{$homePage?->title_3}}</h1>
           <!-- slider 3rd Header -->
           <div class="counter-box d-flex align-items-start">
             <!-- COunter Box -->
@@ -44,31 +44,17 @@
         <div class="col-sm-12 col-md-12 col-lg-6 justify-content-end">
           <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
+              @forelse($slider as $i=>$s)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$i}}" class="@if($i==0) active @endif" aria-current="true" aria-label="Slide {{$i}}"></button>
+              @empty
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              @endforelse
+              
             </div>
             <div class="carousel-inner">
               <div class="carousel-inner">
-                @forelse($slider as $s)
-                <div class="carousel-item active">
+                @forelse($slider as $i=>$s)
+                <div class="carousel-item @if($i==0) active @endif">
                   <img
                     src="{{asset('uploads/Slide_image/thumb/'.$s->image)}}"
                     class="d-block w-100"
@@ -148,7 +134,7 @@
                   <p class="card-amount">
                     <span class="dollar-sign">$</span> USD {{$loc->price}}
                   </p>
-                  <p class="card-text fw-bold">{{$loc->name}}</p>
+                  <p class="card-text fw-bold h-60">{{\Illuminate\Support\Str::limit($loc->name,32)}}</p>
                   <p class="card-location">Location : {{$loc->locat?->name}}</p>
                 </div>
               </a>
@@ -166,7 +152,7 @@
                 <p class="card-amount">
                   <span class="dollar-sign">$</span> USD 2000.00
                 </p>
-                <p class="card-text fw-bold">Golden Home Town</p>
+                <p class="card-text fw-bold h-60">Golden Home Town</p>
                 <p class="card-location">Location : Ontorio, Canada</p>
               </div>
             </div>
@@ -192,7 +178,7 @@
                 <div class="d-flex third-section-image p-2">
                   <div class="p-2">
                     <img
-                    src="{{asset('uploads/about/img1/thumb/'.$about->image_one)}}"
+                    src="{{asset('uploads/about/img1/thumb/'.$about?->image_one)}}"
                     class="img-fluid third-section-pic"
                       alt=""
                     />
@@ -200,14 +186,14 @@
                   <div>
                     <div class="p-2">
                       <img
-                        src="{{asset('uploads/about/img2/thumb/'.$about->image_two)}}"
+                        src="{{asset('uploads/about/img2/thumb/'.$about?->image_two)}}"
                         class="img-fluid third-section-pic"
                         alt=""
                       />
                     </div>
                     <div class="p-2">
                       <img
-                        src="{{asset('uploads/about/img3/thumb/'.$about->image_three)}}"
+                        src="{{asset('uploads/about/img3/thumb/'.$about?->image_three)}}"
                         class="img-fluid third-section-pic"
                         alt=""
                       />
@@ -234,12 +220,12 @@
               <!-- second header -->
               <div class="me-5">
                 <h2 class="second-header" style="width: 20rem">
-                  {{$about->title}}
+                  {{$about?->title}}
                 </h2>
               </div>
               <!-- head end -->
               <p class="my-4 fw-semibold third-section-pera">
-                {{$about->short_text}}
+                {{$about?->short_text}}
               </p>
               <!-- list start -->
               <ul class="third-section-list ms-0">
@@ -293,13 +279,13 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Call</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->contact_no}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button shadow-lg">
-                      <a type="button" class="btn fs-4 fw-bold text-light py-0">
+                      <a href="tel:{{$homePage?->contact_no}}" class="btn fs-4 fw-bold text-light py-0">
                         Call Now
                       </a>
                     </div>
@@ -321,18 +307,15 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Chat</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->contact_no}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button-text shadow-lg">
-                      <button
-                        type="button"
-                        class="btn button-text fs-4 fw-bold py-0"
-                      >
+                      <a class="btn button-text fs-4 fw-bold py-0">
                         Chat Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -352,18 +335,15 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Video Call</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->whatsapp_number}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button-text shadow-lg">
-                      <button
-                        type="button"
-                        class="btn button-text fs-4 fw-bold py-0"
-                      >
+                      <a href="{{$homePage?->whatsapp_call_link}}" class="btn fs-4 button-text fw-bold py-0">
                         Call Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -383,18 +363,15 @@
                       <div class="fourth-card-pera ps-3">
                         <h6 class="fw-semibold">Massege</h6>
                         <p class="fourth-card-number text-body-tertiary">
-                        {{$homePage->contact_no}}
+                        {{$homePage?->sms_number}}
                         </p>
                       </div>
                     </div>
 
                     <div class="text-center fourth-button-text shadow-lg">
-                      <button
-                        type="button"
-                        class="btn fs-4 button-text fw-bold py-0"
-                      >
+                      <a href="sms:{{$homePage?->sms_number}}" class="btn fs-4 button-text fw-bold py-0">
                         Massege Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -411,7 +388,7 @@
               alt=""
             />
             <img
-              src="{{asset('uploads/contact_img/thumb/'.$homePage->contact_img)}}"
+              src="{{asset('uploads/contact_img/thumb/'.$homePage?->contact_img)}}"
               class="img-fluid p-3 fourth-section-pic"
               alt=""
             />
@@ -441,7 +418,7 @@
       <div class="row pt-3 mt-5">
         @forelse($location as $loca)
         
-          <dic class="col-sm-6 col-md-4 col-lg-3 py-2">
+          <div class="col-sm-6 col-md-4 col-lg-3 py-2">
             <div  style="background-image: url('{{ asset('uploads/location/thumb/'.$loca->feature_img)}}');">
               <div class="fifth-section-card px-1 pb-1 pt-2">
                 <div class="fourth-button mt-2 me-2 float-end text-light">
@@ -461,7 +438,7 @@
                 </div>
               </div>
             </div>
-          </dic>
+          </div>
         
         @empty
         @endforelse
@@ -474,10 +451,10 @@
       <div class="row pt-5">
         <div class="col-sm-12 col-md-12 col-lg-6">
           <h2 class="second-header lh-1 fw-semibold fs-2">
-            {{$found->title}}
+            {{$found?->title}}
           </h2>
-          <p class="lh-1 fs-6 fw-bold">{{$found->sub_title}}</p>
-          <p class="fs-2 fw-semibold">{{$found->name}}</p>
+          <p class="lh-1 fs-6 fw-bold">{{$found?->sub_title}}</p>
+          <p class="fs-2 fw-semibold">{{$found?->name}}</p>
           <div class="d-flex">
             <div class="p-2">
               <a href=""
@@ -495,7 +472,7 @@
           </div>
           <div class="sixth-pera fw-semibold mt-4 me-5">
             <p>
-            {!!$found->message!!}
+            {!!$found?->message!!}
             </p>
           </div>
         </div>
@@ -503,7 +480,7 @@
           <div class="sixth-pic">
             <img
               class="img-fluid ceo-img"
-              src="{{asset('uploads/founder/thumb/'.$found->image)}}"
+              src="{{asset('uploads/founder/thumb/'.$found?->image)}}"
               alt=""
             />
           </div>

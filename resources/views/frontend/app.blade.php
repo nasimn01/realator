@@ -48,7 +48,7 @@
       <nav class="navbar navbar-expand-lg nav-text">
         <div class="container">
           <a class="navbar-brand logo" href="{{route('front')}}">
-            <img src="{{asset('uploads/logo/'.$homePage->logo)}}" alt="" />
+            <img src="{{asset('uploads/logo/'.$homePage?->logo)}}" alt="" />
             <!-- header logo -->
           </a>
           <button
@@ -82,10 +82,10 @@
             <!-- Nav End -->
             <form class="d-flex toggler-center" role="search">
               <!-- Header Telephone Button -->
-              <a class="btn-brand" href="tel:+88 0145 67890123"
+              <a class="btn-brand" href="tel:{{$homePage?->contact_no}}"
                 ><i class="bi bi-telephone-fill"></i
               ></a>
-              <span class="ms-2">{{$homePage->contact_no}}</span>
+              <span class="ms-2">{{$homePage?->contact_no}}</span>
             </form>
           </div>
         </div>
@@ -132,12 +132,12 @@
           </div>
           <div class="col-sm-12 col-md-6 col-lg-3 text-center mb-5">
             <a href="{{route('front')}}">
-              <img class="img-fluid" src="{{asset('uploads/logo/'.$homePage->logo)}}" alt="" />
+              <img class="img-fluid" src="{{asset('uploads/logo/'.$homePage?->logo)}}" alt="" />
             </a>
             <div class="share-icon mt-4">
-              <a href="{{$homePage->facebook}}"><i style="color: #3b5998" class="bi bi-facebook"></i></a>
-              <a href="{{$homePage->twitter}}"><i style="color: #00acee" class="bi bi-twitter"></i></a>
-              <a href="{{$homePage->linkedin}}"><i style="color: #0072b1" class="bi bi-linkedin"></i></a>
+              <a href="{{$homePage?->facebook}}"><i style="color: #3b5998" class="bi bi-facebook"></i></a>
+              <a href="{{$homePage?->twitter}}"><i style="color: #00acee" class="bi bi-twitter"></i></a>
+              <a href="{{$homePage?->linkedin}}"><i style="color: #0072b1" class="bi bi-linkedin"></i></a>
               
               
             </div>
