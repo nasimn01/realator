@@ -2,34 +2,25 @@
 @section('pageTitle',trans('Single'))
 
 @section('content')
-<meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
-<meta property="og:type"          content="website" />
-<meta property="og:title"         content="Your Website Title" />
-<meta property="og:description"   content="Your description" />
-<meta property="og:image"         content="https://quickpicker.xyz/realator/public/uploads/about/img2/thumb/1680763214.png" />
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) return;
-js = d.createElement(s); js.id = id;
-js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
+<meta property="og:url"           content="{{route('sProperty',$singleProp->id)}}" />
+<meta property="og:type"          content="Realator" />
+<meta property="og:title"         content="{{$singleProp->locat?->name}}" />
+<meta property="og:description"   content="{{$singleProp->locat?->name}}" />
+<meta property="og:image"         content="{{asset('uploads/property_feature/thumb/'.$singleProp->feature_photo)}}" />
 
     <!-- Swiper -->
     <section class="shadow-lg">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                @forelse($propPhoto as $photo)
-                <div class="swiper-slide">
-                    <img class="modImg" src="{{asset('uploads/property_photo/thumb/'.$photo->image)}}" alt="" />
-                </div>
-                @empty
-                @endforelse
-            </div>
-            <div class="swiper-pagination"></div>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            @forelse($propPhoto as $photo)
+              <div class="swiper-slide">
+                <img class="modImg" src="{{asset('uploads/property_photo/thumb/'.$photo->image)}}" alt="" />
+              </div>
+            @empty
+            @endforelse
         </div>
+        <div class="swiper-pagination"></div>
+      </div>
     </section>
     <!-- Swiper end -->
     <main class="single-bg">
@@ -520,11 +511,21 @@ fjs.parentNode.insertBefore(js, fjs);
             <div class="share bg-white shadow-lg p-4 rounded mb-4">
               <p class="share-btn shadow">Share</p>
               <div class="share-icon">
-                <i style="color: #3b5998" class="bi bi-facebook"></i>
-                <i style="color: #00acee" class="bi bi-twitter"></i>
-                <i style="color: #0072b1" class="bi bi-linkedin"></i>
-                <i style="color: #34b7f1" class="bi bi-whatsapp"></i>
-                <i style="color: #006aff" class="bi bi-chat-fill"></i>
+                <a target="_blank" href="https://www.facebook.com/sharer.php?u={{route('sProperty',$singleProp->id)}}">
+                  <i style="color: #3b5998" class="bi bi-facebook"></i>
+                </a>
+                <a target="_blank" href=https://twitter.com/share?url={{route('sProperty',$singleProp->id)}}&text={{urlencode($singleProp->locat?->name)}}">
+                  <i style="color: #00acee" class="bi bi-twitter"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/shareArticle?url={{route('sProperty',$singleProp->id)}}&title={{urlencode($singleProp->locat?->name)}}">
+                  <i style="color: #0072b1" class="bi bi-linkedin"></i>
+                </a>
+                <a target="_blank" href="https://wa.me/?text={{urlencode($singleProp->locat?->name)}}+{{route('sProperty',$singleProp->id)}}">
+                  <i style="color: #34b7f1" class="bi bi-whatsapp"></i>
+                </a>
+                <a target="_blank" href="fb-messenger://share/?link= {{route('sProperty',$singleProp->id)}}&app_id=123456789">
+                  <i style="color: #006aff" class="bi bi-chat-fill"></i>
+                </a>
               </div>
             </div>
             <!-- feature proparty -->
@@ -593,5 +594,33 @@ fjs.parentNode.insertBefore(js, fjs);
     const overallAverage = checkedSum / sets.length;
     document.getElementById("average-values").textContent = overallAverage.toFixed(1);
   });
+  new Swiper(".mySwiper", {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  freeMode: true,
+  loop: true,
+  lazyLoading: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  keyboard: {
+    enabled: true,
+  },
+  breakpoints: {
+    480: {
+      slidesPerView: 1,
+      spaceBetween: 40,
+    },
+    600: {
+      slidesPerView: 2,
+      spaceBetween: 40,
+    },
+    990: {
+      slidesPerView: 3,
+      spaceBetween: 50,
+    },
+  },
+});
 </script>
 @endpush

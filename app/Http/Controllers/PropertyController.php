@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\property;
 use App\Models\property_category;
+use App\Models\property_photo;
 use App\Models\location;
 use App\Models\advance_feature;
 use App\Models\ameneties;
@@ -68,17 +69,31 @@ class PropertyController extends Controller
             $pro->status = $request->status;
             $pro->is_feature = $request->is_feature;
             if($request->has('feature_photo'))
-            $pro->feature_photo=$this->resizeImage($request->feature_photo,'uploads/property_feature',true,288,228,false);
+                $pro->feature_photo=$this->resizeImage($request->feature_photo,'uploads/property_feature',true,288,228,false);
+
             if($pro->save()){
-            Toastr::success('Create Successfully!');
-            return redirect()->route(currentUser().'.property.index');
+                if($request->has('image')){
+                    foreach($request->image as $imgdata){
+                        if($imgdata){
+                            $proPhoto=new property_photo;
+                            $proPhoto->property_id = $pro->id;
+                        
+                            $proPhoto->image=$this->resizeImage($imgdata,'uploads/property_photo',true,637,415,false);
+                            $proPhoto->save();
+                        }
+                    }
+                }
+
+                Toastr::success('Create Successfully!');
+                return redirect()->route(currentUser().'.property.index');
             } else{
-            Toastr::success('Please try Again!');
-             return redirect()->back();
+                Toastr::success('Please try Again!');
+                return redirect()->back();
             }
 
         }
         catch (Exception $e){
+            Toastr::error('Please try Again!');
             dd($e);
             return back()->withInput();
 
@@ -109,7 +124,8 @@ class PropertyController extends Controller
         $loc = location::all();
         $ameneties = ameneties::all();
         $prop = property::findOrFail(encryptor('decrypt',$id));
-        return view('property.edit',compact('adv','loc','ameneties','prop','proCat'));
+        $propphoto = property_photo::where('property_id',encryptor('decrypt',$id))->get();
+        return view('property.edit',compact('adv','loc','ameneties','prop','proCat','propphoto'));
     }
 
     /**
@@ -147,11 +163,22 @@ class PropertyController extends Controller
                 $pro->feature_photo=$this->resizeImage($request->feature_photo,$path,true,288,228,false);
 
             if($pro->save()){
-            Toastr::success('Update Successfully!');
-            return redirect()->route(currentUser().'.property.index');
+                if($request->has('image')){
+                    foreach($request->image as $imgdata){
+                        if($imgdata){
+                            $proPhoto=new property_photo;
+                            $proPhoto->property_id = $pro->id;
+                        
+                            $proPhoto->image=$this->resizeImage($imgdata,'uploads/property_photo',true,637,415,false);
+                            $proPhoto->save();
+                        }
+                    }
+                }
+                Toastr::success('Update Successfully!');
+                return redirect()->route(currentUser().'.property.index');
             } else{
-            Toastr::success('Please try Again!');
-             return redirect()->back();
+                Toastr::success('Please try Again!');
+                return redirect()->back();
             }
 
         }
@@ -173,6 +200,18 @@ class PropertyController extends Controller
         $pro= property::findOrFail(encryptor('decrypt',$id));
         $pro->delete();
         return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\property  $property
+     * @return \Illuminate\Http\Response
+     */
+    public function pro_delete(Request $request)
+    {
+        $pro= property_photo::findOrFail($request->id);
+        $pro->delete();
     }
     
 

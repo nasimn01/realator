@@ -49,29 +49,25 @@
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-8">
             <!-- Product Card -->
-            <div id="main-pro-sec single-property" class="">
+            <div id="main-pro-sec" class="">
                 @forelse($properties as $p)
-                <div class="main-col6-add">
-                  <div class="share product-card-seciton bg-white shadow-lg p-2 rounded mb-4">
-                        <a href="{{route('sProperty',$p->id)}}">
-                          <div class="inner-row-remove row p-2">
-                              <div class="inner-col4-remove col-sm-4">
-                                
-                                  <img class="img-fluid rounded mb-3" src="{{asset('uploads/property_feature/thumb/'.$p->feature_photo)}}" alt=""/>
-                                
-                              </div>
-                              <div class="inner-col8-remove col-sm-8">
-                              <p class="title">{{$p->name}}</p>
-                              <p>{{date('j F, Y', strtotime($p->created_at))}}</p>
-                              <span>${{$p->price}}</span>
-                              <p>
-                                  <i class="bi bi-geo-alt-fill"></i>{{$p->locat?->name}}
-                              </p>
-                              <span>{{$p->property_cat?->name}}</span>
-                              </div>
+                  <div class="main-col6-add">
+                    <div class="share product-card-seciton bg-white shadow-lg p-2 rounded mb-4">
+                      <a href="{{route('sProperty',$p->id)}}">
+                        <div class="inner-row-remove row p-2">
+                          <div class="inner-col4-remove col-sm-4">
+                            <img class="img-fluid rounded mb-3" src="{{asset('uploads/property_feature/thumb/'.$p->feature_photo)}}" alt=""/>
                           </div>
-                        </a>
-                      </div>
+                          <div class="inner-col8-remove col-sm-8">
+                            <p class="title">{{$p->name}}</p>
+                            <p>{{date('j F, Y', strtotime($p->created_at))}}</p>
+                            <span>${{$p->price}}</span>
+                            <p><i class="bi bi-geo-alt-fill"></i>{{$p->locat?->name}}</p>
+                            <span>{{$p->property_cat?->name}}</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 @empty
                 <div class="main-col6-add text-center">

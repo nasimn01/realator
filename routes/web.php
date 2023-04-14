@@ -104,6 +104,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('advance',AdvanceFeatureController::class,['as'=>'admin']);
         Route::resource('ameneties',AmenetiesController::class,['as'=>'admin']);
         Route::resource('property',PropertyController::class,['as'=>'admin']);
+        Route::get('/property-delete', [PropertyController::class,'pro_delete'])->name('admin.pro_delete');
+
         Route::resource('category',cat::class,['as'=>'admin']);
         Route::resource('proPhoto',proPhoto::class,['as'=>'admin']);
         Route::resource('review',review::class,['as'=>'admin']);

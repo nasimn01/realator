@@ -34,9 +34,6 @@
             <li class="submenu-item ">
                 <a href="{{route(currentUser().'.property.index')}}">{{__('Property')}}</a>
             </li>
-            <li class="submenu-item ">
-                <a href="{{route(currentUser().'.proPhoto.index')}}">{{__('Property Photo')}}</a>
-            </li>
         </ul>
     </li>
     

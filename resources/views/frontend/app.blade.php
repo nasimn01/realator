@@ -97,8 +97,8 @@
 
     
 
-<!-- Footer -->
-<section class="footer">
+    <!-- Footer -->
+    <section class="footer">
       <div class="container p-4">
         <div class="row pt-5">
           <div class="col-sm-12 col-md-6 col-lg-3 mb-5">

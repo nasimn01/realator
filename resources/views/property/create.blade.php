@@ -120,20 +120,33 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="status"><b>{{__('Status')}}:</b></label>
-                                        <select class="form-control form-select" value="{{ old('status')}}" name="status">
-                                            <option value="0">Inactive</option>
-                                            <option value="1">Active</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label for="status"><b>{{__('Status')}}:</b></label>
+                                            <select class="form-control form-select" value="{{ old('status')}}" name="status">
+                                                <option value="0">Inactive</option>
+                                                <option value="1">Active</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="is_feature"><b>{{__('Is Feature')}}:</b></label>
-                                        <select class="form-control form-select" value="{{ old('is_feature')}}" name="is_feature">
-                                            <option value="0">No</option>
-                                            <option value="1">Yes</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label for="is_feature"><b>{{__('Is Feature')}}:</b></label>
+                                            <select class="form-control form-select" value="{{ old('is_feature')}}" name="is_feature">
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="row imggl">
+                                    <label for="status"><b>{{__('Gallery Image')}}:</b></label>
+                                    <div class="col-5 col-sm-3 mb-3">
+                                        <input type="file" class="dropify" data-height="100" name="image[]"/>
+                                    </div> 
+                                    <div class="col-2 addbtn">
+                                        <button type="button" class="btn btn-primary" onclick="addGallery()">Add More</button>
+                                    </div> 
+                                </div> <!-- end row -->
                                 <div class="row">
                                     <div class="col-12 py-2 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
@@ -152,5 +165,14 @@
 @push('scripts')
 <script src="{{ asset('/assets/extensions/tinymce/tinymce.min.js')}}"></script>
 <script src="{{ asset('/assets/js/pages/tinymce.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('/assets/dropify/dropify.min.css')}}">
+<script src="{{ asset('/assets/dropify/dropify.min.js')}}"></script>
+<script src="{{ asset('/assets/js/pages/form-fileupload.init.js')}}"></script>
+<script>
+    function addGallery(){
+        $('.addbtn').before('<div class="col-5 col-sm-3 mb-3"><input type="file" class="dropify" data-height="100" name="image[]"/></div> ');
+        $(".dropify").dropify({messages:{default:"Drag and drop a file here or click",replace:"Drag and drop or click to replace",remove:"Remove",error:"Ooops, something wrong appended."},error:{fileSize:"The file size is too big (1M max)."}});
+    }
+</script>
 @endpush
 
