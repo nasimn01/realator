@@ -91,11 +91,11 @@
                 </div>
                 <div class="form-check mb-2">
                   <input class="form-check-input" name="property_type" type="radio" value="2" {{ request('property_type') == '2' ? 'checked' : '' }} id="defaultCheck2"/>
-                  <label class="form-check-label" for="property_type">Buy</label>
+                  <label class="form-check-label" for="property_type">Buy/Sales</label>
                 </div>
                 <div class="form-check mb-2">
                   <input class="form-check-input" name="property_type" type="radio" value="3" {{ request('property_type') == '3' ? 'checked' : '' }} id="defaultCheck3"/>
-                  <label class="form-check-label" for="property_type">Sales</label>
+                  <label class="form-check-label" for="property_type">land</label>
                 </div>
               </div>
             </form>

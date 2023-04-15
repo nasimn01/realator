@@ -125,7 +125,7 @@
             <ul class="nav flex-column">
               <li class="nav-item"><a class="nav-link" href="{{ route('search') }}">Property list</a></li>
               <li class="nav-item">
-                <a class="nav-link" href="">Location List</a>
+                <a class="nav-link" href="{{ route('location.page') }}">Location List</a>
               </li>
               <li class="nav-item"><a class="nav-link" href="">Trams & Condition</a></li>
             </ul>
