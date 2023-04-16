@@ -14,7 +14,9 @@
                 <h2 class="second-header">
                   {{$blog->title}}
                 </h2>
-                <p><b><em>Published at</em></b> {{$blog->bolg_date}}</p>
+                <p style="font-size: 14px;">
+                  <em><b>Published at</b> {{date('j F, Y', strtotime($blog->bolg_date))}}</em>
+                </p>
               </div>
               
               <div class="pb-2 text-center">

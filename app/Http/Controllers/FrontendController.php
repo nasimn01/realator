@@ -54,53 +54,18 @@ class FrontendController extends Controller
      */
     public function search(Request $request)
     {
-        $search_location = location::all();
         $feature_property = property::where('is_feature',1)->get();
         $homePage = home_page::latest()->take(1)->first();
-
+        $search_location = location::all();
+        $propertyTypes = $request->input('property_type') ?? []; // Get selected property types or an empty array
+        $locations = $request->input('location') ?? []; // Get selected locations or an empty array
+        $priceRanges = $request->input('price_range') ?? []; // Get selected price ranges or an empty array
+        $search = $request->input('name') ?? ''; // Get search term or an empty string
         $sortBy = request('sort_by');
-        $priceRange = request('price_range');
-        $category = $request->input('category', '');
-        $location = $request->input('locat', '');
-        $search = $request['name']?? "";
-        $bed = $request['bed']?? "";
-        $propertyType = $request['property_type'] ?? "";
-        $location_type = $request['locationType'] ?? "";
-
+        
         $properties = Property::query();
 
-        // if ($search != "") {
-        //     $properties->where('name', 'LIKE', '%'.$search.'%');
-        // }
-        if ($search != "") {
-            $properties->where(function ($query) use ($search) {
-                $query->where('name', 'LIKE', '%'.$search.'%')
-                    ->orWhere('location', 'LIKE', '%'.$search.'%')
-                    ->orWhere('price', 'LIKE', '%'.$search.'%');
-            });
-        }
-        if ($propertyType != "") {
-            $properties->where('property_category_id', $propertyType);
-        }
-        if ($location_type != "") {
-            $properties->where('location', $location_type);
-        }
-        if ($bed != "") {
-            $properties->where('bed', $bed);
-        }
-
-
-        if (!empty($category) && !empty($location)) {
-            $properties->where(function ($query) use ($category, $location) {
-                $query->where('property_category_id', $category)
-                      ->where('location', 'LIKE', '%'.$location.'%');
-            });
-        } elseif (!empty($category)) {
-            $properties->where('property_category_id', $category);
-        } elseif (!empty($location)) {
-            $properties->where('location'.'', 'LIKE', '%'.$location.'%');
-        }
-
+         // Filter by selected asc, des, a to z, z to a
         switch ($sortBy) {
             case 'a_to_z':
                 $properties->orderBy('name', 'asc');
@@ -118,35 +83,48 @@ class FrontendController extends Controller
                 $properties->latest(); // Default to "latest" if no option is selected
                 break;
         }
-        
-        switch ($priceRange) {
-            case '0-999':
-                $properties->where('price', '>=', 0)->where('price', '<=', 999);
-                break;
-            case '1000-1999':
-                $properties->where('price', '>=', 1000)->where('price', '<=', 1999);
-                break;
-            case '2000-2999':
-                $properties->where('price', '>=', 2000)->where('price', '<=', 2999);
-                break;
-            case '3000-3999':
-                $properties->where('price', '>=', 3000)->where('price', '<=', 3999);
-                break;
-            case '4000-4999':
-                $properties->where('price', '>=', 4000)->where('price', '<=', 4999);
-                break;
-            case '5000-5999':
-                $properties->where('price', '>=', 5000)->where('price', '<=', 5999);
-                break;
-            default:
-                // No price range selected, do nothing
-                break;
+
+        // Filter by selected property types
+        if (!empty($propertyTypes)) {
+            $properties->whereIn('property_category_id', $propertyTypes);
+        }
+
+        // Filter by selected locations
+        if (!empty($locations)) {
+            $properties->whereIn('location', $locations);
+        }
+
+        // Filter by selected price ranges
+        if (!empty($priceRanges)) {
+            $priceRangeArray = [];
+            foreach ($priceRanges as $priceRange) {
+                // Convert price range string to min and max values
+                list($minPrice, $maxPrice) = explode('-', $priceRange);
+                $priceRangeArray[] = [$minPrice, $maxPrice];
+            }
+            $properties->where(function ($query) use ($priceRangeArray) {
+                foreach ($priceRangeArray as $priceRange) {
+                    $query->orWhereBetween('price', $priceRange);
+                }
+            });
+        }
+
+        // Filter by search term
+        if ($search != "") {
+            $properties->where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('price', 'LIKE', '%'.$search.'%')
+                    ->orWhereHas('locat', function ($query) use ($search) {
+                        $query->where('name', 'LIKE', '%'.$search.'%');
+                    });
+                });
         }
 
         $properties = $properties->paginate(10);
 
-        return view('frontend.search', compact('properties','search','homePage','feature_property','propertyType','search_location','location_type','bed','category','location'));
+        return view('frontend.search', compact('homePage','properties','feature_property','search_location', 'propertyTypes', 'locations', 'priceRanges', 'search'));
     }
+
      /**
      * Show the form for creating a new resource.
      *

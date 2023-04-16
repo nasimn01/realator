@@ -27,18 +27,36 @@
                                         <div class="form-group">
                                             <label for="title">Title 1</label>
                                             <input type="text" id="title1" class="form-control" value="{{ old('title1',$home->title_1)}}" name="title1">
+                                            <p class="text-danger m-0">Characters should be between 8 to 12</p>
+                                            @if($errors->has('title1'))
+                                                <small class="d-block text-danger">
+                                                    {{$errors->first('title1')}}
+                                                </small>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="title">Title 2</label>
                                             <input type="text" id="title2" class="form-control" value="{{ old('title2',$home->title_2)}}" name="title2">
+                                            <p class="text-danger m-0">Characters should be between 15 to 20</p>
+                                            @if($errors->has('title2'))
+                                                <small class="d-block text-danger">
+                                                    {{$errors->first('title2')}}
+                                                </small>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="title">Title 3</label>
                                             <input type="text" id="title3" class="form-control" value="{{ old('title3',$home->title_3)}}" name="title3">
+                                            <p class="text-danger m-0">Characters should be between 8 to 12</p>
+                                            @if($errors->has('title3'))
+                                                <small class="d-block text-danger">
+                                                    {{$errors->first('title3')}}
+                                                </small>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

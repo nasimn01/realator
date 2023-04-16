@@ -26,6 +26,12 @@
                                         <div class="form-group">
                                             <label for="review">Review Message</label>
                                             <textarea class="form-control" name="review" id="review"  rows="2">{{old('review',$customer->review)}}</textarea>
+                                            <p class="text-danger m-0">Maximum characters can be 160</p>
+                                            @if($errors->has('review'))
+                                                <small class="d-block text-danger">
+                                                    {{$errors->first('review')}}
+                                                </small>
+                                            @endif
                                         </div>
                                     </div>
                                     

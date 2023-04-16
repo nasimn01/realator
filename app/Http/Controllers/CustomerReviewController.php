@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\customer_review;
 use App\Models\subscriber_email;
 use Illuminate\Http\Request;
+use App\Http\Requests\creview\addNewRequest;
+use App\Http\Requests\creview\updateRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Traits\ImageHandleTraits;
 use Exception;
@@ -49,7 +51,7 @@ class CustomerReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(addNewRequest $request)
     {
         try{
             $proCat=new customer_review;
@@ -104,7 +106,7 @@ class CustomerReviewController extends Controller
      * @param  \App\Models\customer_review  $customer_review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateRequest $request, $id)
     {
         try{
             $proCat= customer_review::findOrFail(encryptor('decrypt',$id));

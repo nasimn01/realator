@@ -1,6 +1,5 @@
 @extends('frontend.app')
 @section('pageTitle',trans('Home'))
-@section('pageSubTitle',trans('List'))
 
 @section('content')
   
@@ -544,7 +543,7 @@
           @forelse($customer as $cus)
           <div class="col-sm-12 col-md-6 col-lg-4 text-center mt-4 mb-5">
             <div class="card rounded-4 border-0 shadow-lg">
-              <div class="card-body">
+              <div class="card-body Testimunial">
                 <p class="lh-sm eigth-pera fw-normal mb-4">
                   <span class="fs-3 fw-bold">“</span> {{$cus->review}} <span class="fs-3 fw-bold">”</span>
                 </p>

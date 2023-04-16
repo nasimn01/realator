@@ -3,7 +3,7 @@
 
 @section('content')
 <main class="single-bg">
-      <div class="container">
+      <div class="container" id="search-results">
         <!-- title section -->
         <div class="search-page py-5 text-center">
           <p>
@@ -19,7 +19,7 @@
             <div class="col-sm-4">
             <form action="" method="get">
                 <div class="searchBox">
-                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="Search by name">
+                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="Search">
                     <button type="submit">
                         <span class="bi bi-search"></span>
                     </button>
@@ -82,62 +82,62 @@
           </div>
           <div class="col-sm-12 col-md-12 col-lg-4">
             <!-- Property Status filter -->
-            <form action="" method="get">
+            <form id="property-search-form" action="{{ route('search') }}" method="get">
               <div class="share bg-white shadow-lg p-4 rounded mb-4">
                 <p class="mb-4 fw-bold">Property Type</p>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="property_type" type="radio" value="1"{{ request('property_type') == '1' ? 'checked' : '' }} id="defaultCheck1"/>
+                  <input class="form-check-input" name="property_type[]" type="checkbox" value="1" id="defaultCheck1" @if(in_array('1', $propertyTypes)) checked @endif/>
                   <label class="form-check-label" for="property_type">Rent</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="property_type" type="radio" value="2" {{ request('property_type') == '2' ? 'checked' : '' }} id="defaultCheck2"/>
+                  <input class="form-check-input" name="property_type[]" type="checkbox" value="2" id="defaultCheck2" @if(in_array('2', $propertyTypes)) checked @endif/>
                   <label class="form-check-label" for="property_type">Buy/Sales</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="property_type" type="radio" value="3" {{ request('property_type') == '3' ? 'checked' : '' }} id="defaultCheck3"/>
+                  <input class="form-check-input" name="property_type[]" type="checkbox" value="3" id="defaultCheck3" @if(in_array('3', $propertyTypes)) checked @endif/>
                   <label class="form-check-label" for="property_type">land</label>
                 </div>
               </div>
-            </form>
+            
             <!-- Location filter -->
-            <form action="" method="get">
+            
               <div class="share bg-white shadow-lg p-4 rounded mb-4">
                 <p class="mb-4 fw-bold">Loacation</p>
                 @foreach($search_location as $sl)
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="locationType" type="radio" value="{{$sl->id}}" {{ request('locationType') == $sl->id ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="location[]" type="checkbox" value="{{$sl->id}}" @if(in_array($sl->id, $locations)) checked @endif/>
                   <label class="form-check-label" for="defaultCheck1">{{$sl->name}}</label>
                 </div>
                 @endforeach
               </div>
-            </form>
+           
             
             <!-- Price filter -->
-            <form action="{{ route('search') }}" method="GET" id="search-form">
+            
               <div class="share bg-white shadow-lg p-4 rounded mb-4" id="price-range">
                 <p class="mb-4 fw-bold">Price</p>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="price_range" type="radio" value="0-999" {{ old('price_range') === '0-999' ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="price_range[]" type="checkbox" value="0-999" @if(in_array('0-999', $priceRanges)) checked @endif/>
                   <label class="form-check-label" for=""> 0 to 999USD</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="price_range" type="radio" value="1000-1999" {{ old('price_range') === '1000-1999' ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="price_range[]" type="checkbox" value="1000-1999" @if(in_array('1000-1999', $priceRanges)) checked @endif/>
                   <label class="form-check-label" for=""> 1000 to 1999 USD</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="price_range" type="radio" value="2000-2999" {{ old('price_range') === '2000-2999' ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="price_range[]" type="checkbox" value="2000-2999" @if(in_array('2000-2999', $priceRanges)) checked @endif/>
                   <label class="form-check-label" for=""> 2000 to 2999 USD</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="price_range" type="radio" value="3000-3999" {{ old('price_range') === '3000-3999' ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="price_range[]" type="checkbox" value="3000-3999"  @if(in_array('3000-3999', $priceRanges)) checked @endif/>
                   <label class="form-check-label" for=""> 3000 to 3999 USD</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="price_range" type="radio" value="4000-4999" {{ old('price_range') === '4000-4999' ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="price_range[]" type="checkbox" value="4000-4999"  @if(in_array('4000-4999', $priceRanges)) checked @endif/>
                   <label class="form-check-label" for=""> 4000 to 4999 USD</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" name="price_range" type="radio" value="5000-5999" {{ old('price_range') === '5000-5999' ? 'checked' : '' }}/>
+                  <input class="form-check-input" name="price_range[]" type="checkbox" value="5000-5999" @if(in_array('5000-5999', $priceRanges)) checked @endif/>
                   <label class="form-check-label" for=""> 5000 to 5999 USD</label>
                 </div>
               </div>
@@ -214,13 +214,27 @@
       });
     });
 
-    $(function() {
-      $('#price-range input[type="radio"]').change(function() {
-          $('#search-form').submit();
-      });
-    });
-    
-
 });
 </script>
+<script>
+    // listen for changes to the checkboxes
+    $('input[type="checkbox"]').on('change', function () {
+        // submit the form using AJAX
+        $.ajax({
+            type: 'GET',
+            url: $('#property-search-form').attr('action'),
+            data: $('#property-search-form').serialize(),
+            success: function (data) {
+                // find the element in the returned data that contains the search results
+                var searchResults = $(data).find('#main-pro-sec').html();
+                // update the #search-results element on the page with the extracted search results
+                $('#main-pro-sec').html(searchResults);
+            },
+            error: function () {
+                // handle errors
+            }
+        });
+    });
+</script>
+
 @endpush

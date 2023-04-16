@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\home_page;
 use Illuminate\Http\Request;
+use App\Http\Requests\home\addNewRequest;
+use App\Http\Requests\home\updateRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Traits\ImageHandleTraits;
 use Exception;
@@ -38,7 +40,7 @@ class HomePageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(addNewRequest $request)
     {
         try{
             $home = new home_page();
@@ -106,7 +108,7 @@ class HomePageController extends Controller
      * @param  \App\Models\home_page  $home_page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateRequest $request, $id)
     {
         try{
             $home = home_page::findOrFail(encryptor('decrypt', $id));
