@@ -27,6 +27,7 @@ use App\Http\Controllers\AboutUsController as about;
 use App\Http\Controllers\AboutUsMotiveController as aboutMotive;
 use App\Http\Controllers\CustomerQueryController as cquery;
 use App\Http\Controllers\PropertyReviewController as preview;
+use App\Http\Controllers\TermsAndConditionController as terms;
 
 
 /* Middleware */
@@ -55,6 +56,8 @@ Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
+/* About Page */
+Route::get('/terms-and-condition', [front::class, 'termsCondition'])->name('term.page');
 /* About Page */
 Route::get('/about.page', [front::class, 'aboutUs'])->name('about.page');
 /* About Page */
@@ -113,6 +116,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('about',about::class,['as'=>'admin']);
         Route::resource('aboutMotive',aboutMotive::class,['as'=>'admin']);
         Route::resource('cquery',cquery::class,['as'=>'admin']);
+        Route::resource('terms',terms::class,['as'=>'admin']);
         
         Route::get('/query-view', [cquery::class,'queryView'])->name('admin.customer-query-view');
         Route::get('/subscriber-list', [review::class, 'subscriberList'])->name('admin.subscriber.list');

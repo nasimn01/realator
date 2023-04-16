@@ -22,9 +22,9 @@
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'> <i class="bi bi-files"></i> <span>{{__('Property')}}</span> </a>
         <ul class="submenu">
-            <li class="submenu-item ">
+            <!-- <li class="submenu-item ">
                 <a href="{{route(currentUser().'.category.index')}}">{{__('Property Category')}}</a>
-            </li>
+            </li> -->
             <li class="submenu-item ">
                 <a href="{{route(currentUser().'.advance.index')}}">{{__('Advance Feature')}}</a>
             </li>
@@ -77,6 +77,9 @@
             </li>
             <li class="submenu-item">
                 <a href="{{route(currentUser().'.aboutMotive.index')}}">{{__('About Us Motive')}}</a>
+            </li>
+            <li class="submenu-item">
+                <a href="{{route(currentUser().'.terms.index')}}">{{__('Terms & Condition')}}</a>
             </li>
         </ul>
     </li>

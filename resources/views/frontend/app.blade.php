@@ -127,7 +127,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('location.page') }}">Location List</a>
               </li>
-              <li class="nav-item"><a class="nav-link" href="">Trams & Condition</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{route('term.page')}}">Trams & Condition</a></li>
             </ul>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-3 text-center mb-5">

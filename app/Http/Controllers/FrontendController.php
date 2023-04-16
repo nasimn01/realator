@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\home_page;
 use App\Models\blog;
+use App\Models\terms_and_condition;
 use App\Models\about_us;
 use App\Models\about_us_motive;
 use App\Models\subscriber_email;
@@ -166,6 +167,19 @@ class FrontendController extends Controller
         $homePage = home_page::latest()->take(1)->first();
 
         return view('frontend.about',compact('homePage','about_motive','about'));
+    }
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function termsCondition()
+    {
+        $terms = terms_and_condition::latest()->take(1)->first();
+        $homePage = home_page::latest()->take(1)->first();
+
+        return view('frontend.terms',compact('homePage','terms'));
     }
      /**
      * Show the form for creating a new resource.
