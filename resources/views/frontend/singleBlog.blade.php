@@ -11,9 +11,9 @@
               <h3 class="fw-bold border-bottom my-3">Blog</h3>
               <!-- second header -->
               <div class="me-5">
-                <h2 class="second-header">
+                <h4 class="second-header">
                   {{$blog->title}}
-                </h2>
+                </h4>
                 <p style="font-size: 14px;">
                   <em><b>Published at</b> {{date('j F, Y', strtotime($blog->bolg_date))}}</em>
                 </p>

@@ -12,12 +12,12 @@
               <h3 class="fw-bold border-bottom my-3">About Us</h3>
               <!-- second header -->
               <div class="me-5">
-                <h2 class="second-header">
+                <h4 class="second-header">
                   {{$about->title}}
-                </h2>
+                </h4>
               </div>
               <!-- head end -->
-              <p class="my-4 fw-semibold third-section-pera">
+              <p class="my-1 fw-semibold third-section-pera">
                 {{$about->long_description}}
               </p>
               <!-- list start -->
