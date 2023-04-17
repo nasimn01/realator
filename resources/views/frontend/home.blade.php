@@ -1,6 +1,9 @@
 @extends('frontend.app')
 @section('pageTitle',trans('Home'))
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('/assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
+@endpush
 @section('content')
   
     <!-- Slider Section Start -->
@@ -92,7 +95,7 @@
                 </div>
                 <div class="col-sm-5 mb-3">
                   <select
-                    class="form-select form-select-sm"
+                    class="form-select choices form-select-sm"
                     aria-label="Default select example"
                     name="locat"
                   >
@@ -626,6 +629,10 @@
       </div>
     </section>
     <!-- ninth section end -->
-    @endsection
+@endsection
+@push('scripts')
+<script src="{{ asset('/assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+<script src="{{ asset('/assets/js/pages/form-element-select.js') }}"></script>
+@endpush
    
 

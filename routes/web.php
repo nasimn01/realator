@@ -65,6 +65,7 @@ Route::get('/location.page', [front::class, 'location'])->name('location.page');
 
 /* search property */
 Route::get('/search', [front::class, 'search'])->name('search');
+Route::get('/location-search', [front::class, 'search'])->name('location.search');
 
 /* contact page */
 Route::get('/contact', [front::class, 'contactUs'])->name('contact');

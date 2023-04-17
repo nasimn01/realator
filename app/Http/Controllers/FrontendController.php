@@ -58,6 +58,11 @@ class FrontendController extends Controller
         $feature_property = property::where('is_feature',1)->get();
         $homePage = home_page::latest()->take(1)->first();
         $search_location = location::all();
+        
+        //from home page search
+        $category = $request->input('category');
+        $location = $request->input('locat');
+
         $propertyTypes = $request->input('property_type') ?? []; // Get selected property types or an empty array
         $locations = $request->input('location') ?? []; // Get selected locations or an empty array
         $priceRanges = $request->input('price_range') ?? []; // Get selected price ranges or an empty array
@@ -66,6 +71,13 @@ class FrontendController extends Controller
         
         $properties = Property::query();
 
+        if ($category) {
+            $properties->where('property_category_id', $category);
+        }
+
+        if ($location) {
+            $properties->where('location', $location);
+        }
          // Filter by selected asc, des, a to z, z to a
         switch ($sortBy) {
             case 'a_to_z':

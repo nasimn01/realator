@@ -41,6 +41,7 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('resource/css/main.css')}}" />
+    @stack('styles')
   </head>
   <body>
     <!-- Header Logo & Nav start -->
