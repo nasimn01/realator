@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\home_page;
+use App\Models\customer_query;
 use App\Models\blog;
 use App\Models\terms_and_condition;
 use App\Models\about_us;
@@ -20,6 +21,7 @@ use App\Http\Traits\ImageHandleTraits;
 use App\Models\advance_feature;
 use App\Models\property_review;
 use App\Models\ameneties;
+use App\Http\Requests\query\addnewRequest;
 use Illuminate\Support\Facades\Validator;
 use Brian2694\Toastr\Facades\Toastr;
 use Exception;
@@ -294,5 +296,23 @@ class FrontendController extends Controller
         //     return back()->withInput();
 
         // }
+    }
+
+    public function customerQuery(addnewRequest $request)
+    {
+        try{
+            $cq=new customer_query;
+            $cq->name = $request->name;
+            $cq->phone = $request->phoneNumber;
+            $cq->email = $request->emailAddress;
+            $cq->address = $request->address;
+            $cq->message = $request->message;
+            if($cq->save()){
+            return redirect()->back()->withFragment('#query')->with('success','Query Submited Successfully!');
+            } 
+        }
+        catch (Exception $e){ dd($e);
+            return redirect()->back()->withFragment('#query')->with('error','Please try Again!')->withInput();
+        }
     }
 }

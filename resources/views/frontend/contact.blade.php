@@ -4,10 +4,10 @@
 @section('content')
 <section class="container fourth-section my-5 pt-5">
   <div class="text-center">
-      <!-- first header -->
-      <h6>Contact Us</h6>
-      <!-- second header -->
-      <h2 class="fw-bold second-header">Easy to Connect Us</h2>
+    <!-- first header -->
+    <h6>Contact Us</h6>
+    <!-- second header -->
+    <h2 class="fw-bold second-header">Easy to Connect Us</h2>
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-6 mt-5 pe-5">
@@ -146,9 +146,22 @@
   </div>
       <!-- Submit Your Quary -->
   <div class="accordion my-4" id="accordionPanelsStayOpenExample">
-    <div class="accordion-body">
+    <div class="accordion-body" id="query">
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif 
+          
+      @if ($message = Session::get('error'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
     <!-- Comment Form -->
-      <form action="{{route('customer.query')}}" method="post">
+      <form action="{{route('customerQuery')}}" method="post">
           @csrf
           <div class="mb-3comment-form">
             @if(Session::has('response'))

@@ -20,8 +20,11 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        $home = home_page::latest()->take(1)->get();
-        return view('homePage.index',compact('home'));
+        $home = home_page::first();
+        if($home)
+            return view('homePage.index',compact('home'));
+        else
+            return view('homePage.create');
     }
 
     /**
@@ -31,7 +34,7 @@ class HomePageController extends Controller
      */
     public function create()
     {
-        return view('homePage.create');
+        
     }
 
     /**
@@ -66,13 +69,13 @@ class HomePageController extends Controller
                 Toastr::success('Created Successfully');
                 return redirect()->route(currentUser().'.home.index');
             }else{
-                Toastr::success('please try again');
+                Toastr::error('please try again');
                 return redirect()->back();
             }
 
         }
         catch(Exception $e){
-            Toastr::success('Please try again');
+            Toastr::error('Please try again');
             dd($e);
             return back()->withInput();
         }
@@ -139,13 +142,13 @@ class HomePageController extends Controller
                 Toastr::success('Updated Successfully');
                 return redirect()->route(currentUser().'.home.index');
             }else{
-                Toastr::success('please try again');
+                Toastr::error('please try again');
                 return redirect()->back();
             }
 
         }
         catch(Exception $e){
-            Toastr::success('Please try again');
+            Toastr::error('Please try again');
             dd($e);
             return back()->withInput();
         }

@@ -24,7 +24,7 @@ class addnewRequest extends FormRequest
     public function rules()
     {
         return [
-            'phoneNumber'=>'required|unique:customer_queries,phone',
+            'phoneNumber'=>'required',
             'emailAddress'=>'required',
         ];
     }

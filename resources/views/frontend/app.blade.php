@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
       {{-- tostr css --}}
-  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Bootstrap Icon -->
     <link
       rel="stylesheet"
@@ -176,7 +176,7 @@
     @stack('scripts')
 
     {{-- tostr --}}
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     {!! Toastr::message() !!}
   </body>
 </html>

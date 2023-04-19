@@ -76,6 +76,7 @@ Route::get('/single-blog-page/{slug}',[front::class,'singleBlog'])->name('sBlog'
 
 /* single property */
 Route::get('/singleProp/{slug}',[front::class,'singleProperty'])->name('sProperty');
+Route::post('/query_submit',[front::class,'customerQuery'])->name('customerQuery');
 
 /* Customer query */
 Route::post('customer-query',[cquery::class,'customerQuery'])->name('customer.query');

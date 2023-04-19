@@ -62,15 +62,16 @@ class CustomerQueryController extends Controller
             $cq->address = $request->address;
             $cq->message = $request->message;
             if($cq->save()){
-            Toastr::success('Query Submited Successfully!');
+            Toastr::success('Query Submited Successfully!', 'Congrats', ['timeOut' => 500000]);
             return redirect()->back();
             } else{
-            Toastr::success('Please try Again!');
+            Toastr::success('Please try Again!', 'Congrats', ['timeOut' => 500000]);
              return redirect()->back();
             }
 
         }
         catch (Exception $e){
+            Toastr::success('Please try Again!', 'Congrats', ['timeOut' => 500000]);
             dd($e);
             return back()->withInput();
 
@@ -96,13 +97,14 @@ class CustomerQueryController extends Controller
             Toastr::success('Query Submited Successfully!');
             return redirect()->back();
             } else{
-            Toastr::success('Please try Again!');
+            Toastr::error('Please try Again!');
              return redirect()->back();
             }
 
         }
         catch (Exception $e){
-            dd($e);
+            Toastr::error('Please try Again!');
+            //dd($e);
             return back()->withInput();
 
         }

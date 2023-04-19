@@ -19,6 +19,15 @@
           <div class="counter-box d-flex align-items-start">
             <!-- COunter Box -->
             <div class="row">
+              @forelse(\App\Models\property_category::get() as $propcat)
+              <div class="col-sm-4 mb-4">
+                <!-- COunter Box 1 -->
+                <div class="counter shadow-lg rounded-4 p-2 text-center">
+                  <h3>{{$propcat->property->count()}}</h3>
+                  <span>{{$propcat->name}} property</span>
+                </div>
+              </div>
+              @empty
               <div class="col-sm-4 mb-4">
                 <!-- COunter Box 1 -->
                 <div class="counter shadow-lg rounded-4 p-2 text-center">
@@ -26,20 +35,7 @@
                   <span>Rent property</span>
                 </div>
               </div>
-              <div class="col-sm-4 mb-4">
-                <!-- COunter Box 2 -->
-                <div class="counter shadow-lg rounded-4 p-2 text-center">
-                  <h3>2.0K</h3>
-                  <span>Sales property</span>
-                </div>
-              </div>
-              <div class="col-sm-4 mb-4">
-                <!-- COunter Box 3 -->
-                <div class="counter shadow-lg rounded-4 p-2 text-center">
-                  <h3>2.0K</h3>
-                  <span>Land property</span>
-                </div>
-              </div>
+              @endforelse
             </div>
           </div>
         </div>

@@ -457,9 +457,22 @@
                   class="accordion-collapse collapse show"
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
-                  <div class="accordion-body">
+                  <div class="accordion-body" id="query">
+                    @if ($message = Session::get('success'))
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ $message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      @endif 
+                          
+                      @if ($message = Session::get('error'))
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{ $message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      @endif
                     <!-- Comment Form -->
-                    <form action="{{route('customer.query')}}" method="post">
+                    <form action="{{route('customerQuery')}}" method="post">
                       @csrf
                       <div class="mb-3comment-form">
                         @if(Session::has('response'))

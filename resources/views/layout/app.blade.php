@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entsandt Realator | @yield('siteTitle', 'Chittagong')</title>
-<link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
-<link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg') }}" type="image/x-icon">
-<link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/png">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-<link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
 
-  {{-- tostr css --}}
-  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-<script
-  src="https://code.jquery.com/jquery-3.6.1.min.js"
-  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-  crossorigin="anonymous"></script>
+    {{-- tostr css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
   @stack('styles')
 </head>
 
@@ -117,7 +114,7 @@
 
   {{-- tostr --}}
   
-  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   {!! Toastr::message() !!}
 </body>
 

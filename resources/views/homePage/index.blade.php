@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div>
-                <a class="float-end" href="{{route(currentUser().'.home.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                    <a class="float-end" href="{{route(currentUser().'.home.edit',encryptor('encrypt',$home->id))}}" style="font-size:1.7rem"><i class="bi bi-pencil-square"></i></a>
                 </div>
                 @if(Session::has('response'))
                     {!!Session::get('response')['message']!!}
@@ -22,45 +22,36 @@
 
                         <thead>
                             <tr>
-                                <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Logo')}}</th>
-                                <th scope="col">{{__('Title 1')}}</th>
-                                <th scope="col">{{__('Title 2')}}</th>
-                                <th scope="col">{{__('Title 3')}}</th>
-                                <th scope="col">{{__('Contact No')}}</th>
-                                <th scope="col">{{__('Contact img')}}</th>
-                                <th scope="col">{{__('Facebook')}}</th>
-                                <th scope="col">{{__('Twitter')}}</th>
-                                <th scope="col">{{__('Linkedin')}}</th>
-                                <th class="white-space-nowrap">{{__('Action') }}</th>
+                                <th rowspan="4">
+                                    {{__('Logo')}}<br>
+                                    <img width="50px" src="{{asset('uploads/logo/'.$home->logo)}}" alt="">
+                                </th>
+                                <td> <b>{{__('Title 1')}}: </b>{{$home->title_1}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td> <b>{{__('Title 2')}}: </b>{{$home->title_2}}</td>
+                            </tr>
+                            <tr>
+                                <td> <b>{{__('Title 3')}}: </b>{{$home->title_3}}</td>
+                            </tr>
+                            <tr>
+                                <td> <b>{{__('Contact Number')}}: </b>{{$home->contact_no}}</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="3">
+                                    {{__('Contact img')}}<br>
+                                    <img width="50px" src="{{asset('uploads/contact_img/'.$home->contact_img)}}" alt="">
+                                </th>
+                                <td scope="col"><b>{{__('Facebook')}}: </b> {{$home->facebook}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{__('Twitter')}}: </b> {{$home->twitter}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{__('Linkedin')}}: </b> {{$home->linkedin}}</td>
                             </tr>
                         </thead>
-                        <tbody>
-                            @forelse($home as $p)
-                            <tr>
-                                <th scope="row">{{ ++$loop->index }}</th>
-                                <td><img width="50px" src="{{asset('uploads/logo/'.$p->logo)}}" alt=""></td>
-                                <td>{{$p->title_1}}</td>
-                                <td>{{$p->title_2}}</td>
-                                <td>{{$p->title_3}}</td>
-                                <td>{{$p->contact_no}}</td>
-                                <td><img width="50px" src="{{asset('uploads/contact_img/'.$p->contact_img)}}" alt=""></td>
-                                <td>{{$p->facebook}}</td>
-                                <td>{{$p->twitter}}</td>
-                                <td>{{$p->linkedin}}</td>
-                                <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
-                                <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.home.edit',encryptor('encrypt',$p->id))}}">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <th colspan="14" class="text-center">No Data Found</th>
-                            </tr>
-                            @endforelse
-                        </tbody>
                     </table>
                 </div>
             </div>

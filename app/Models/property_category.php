@@ -12,4 +12,8 @@ class property_category extends Model
     public function locat(){
         return $this->belongsTo(location::class, 'location_id','id');
     }
+
+    public function property(){
+        return $this->hasMany(property::class, 'property_category_id','id');
+    }
 }

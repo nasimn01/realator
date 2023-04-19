@@ -26,7 +26,7 @@ class updateRequest extends FormRequest
     {
         $id=encryptor('decrypt',$r->uptoken);
         return [
-            'phoneNumber'=>'required|unique:customer_queries,phone'.$id,
+            'phoneNumber'=>'required',
             'emailAddress'=>'required',
         ];
     }
