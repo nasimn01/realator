@@ -13,7 +13,7 @@
                     <h4>Property Information</h4>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-12 text-center p-2">
-                    <img width="100%" height="180px" src="{{ asset('uploads/property_feature/' . optional($singleProp)->feature_photo) }}" alt="Property">
+                    <img width="100%" height="227px" src="{{ asset('uploads/property_feature/' . optional($singleProp)->feature_photo) }}" alt="Property">
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-12 text-center p-2">
                     <div class="accordion-body">
