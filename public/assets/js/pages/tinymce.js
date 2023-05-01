@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                   xhr = new XMLHttpRequest();
                   xhr.withCredentials = false;
-                  xhr.open("POST", "your_image_upload_url");
+                  xhr.open("POST", "/realator/admin/upload");
 
                   xhr.onload = function () {
                       var json;
@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                           failure("HTTP Error: " + xhr.status);
                           return;
                       }
+
 
                       json = JSON.parse(xhr.responseText);
 

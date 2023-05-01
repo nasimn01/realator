@@ -123,6 +123,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::get('/query-view', [cquery::class,'queryView'])->name('admin.customer-query-view');
         Route::get('/subscriber-list', [review::class, 'subscriberList'])->name('admin.subscriber.list');
 
+        Route::get('/upload', [PropertyController::class,'upload'])->name('upload');
+
     });
 });
 
